@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://gai0a7por88i"]
+
+[ext_resource type="Texture2D" uid="uid://bqg2rd3f5amj1" path="res://Assets/Pixel Crawler - Fairy Forest 1.7/Social/MockUp_01.png" id="1_ef5c4"]
+
+[node name="DemoLevel" type="Node2D" unique_id=1256109257]
+
+[node name="groundtexture" type="Sprite2D" parent="." unique_id=1218455375]
+position = Vector2(810, 812)
+texture = ExtResource("1_ef5c4")

@@ -1,5 +1,12 @@
 [gd_scene format=3 uid="uid://b11jcnkurtpro"]
 
+[ext_resource type="PackedScene" uid="uid://gai0a7por88i" path="res://Levels/DemoLevel.tscn" id="1_2c62f"]
+[ext_resource type="PackedScene" uid="uid://d1aeol57iifk5" path="res://Sprite/Character.tscn" id="2_gyfs4"]
+
 [node name="Node2D" type="Node2D" unique_id=1351805596]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=967658228]
+[node name="DemoLevel" parent="." unique_id=1256109257 instance=ExtResource("1_2c62f")]
+
+[node name="Character" parent="." unique_id=1802027578 instance=ExtResource("2_gyfs4")]
+position = Vector2(280, 254)
+scale = Vector2(3.77, 3.77)
