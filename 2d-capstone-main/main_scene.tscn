@@ -8,5 +8,5 @@
 [node name="DemoLevel" parent="." unique_id=1256109257 instance=ExtResource("1_2c62f")]
 
 [node name="Character" parent="." unique_id=1802027578 instance=ExtResource("2_gyfs4")]
-position = Vector2(280, 254)
-scale = Vector2(3.77, 3.77)
+position = Vector2(268.00006, 375.00003)
+scale = Vector2(1.92, 1.92)
