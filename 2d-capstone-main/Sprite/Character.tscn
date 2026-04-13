@@ -153,8 +153,96 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="Animation" id="Animation_p10r7"]
+resource_name = "MoveDown"
+step = 0.0023
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5011494, 1),
+"transitions": PackedFloat32Array(0.46651652, 1.0000001, 0.4665164),
+"update": 0,
+"values": [Vector2(69, 51), Vector2(69, 67), Vector2(69, 51)]
+}
+
+[sub_resource type="Animation" id="Animation_lqjtr"]
+resource_name = "MoveLeft"
+step = 0.0023
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.46651652, 1.0000001, 0.4665164),
+"update": 0,
+"values": [Vector2(69, 51), Vector2(69, 32), Vector2(69, 51)]
+}
+
+[sub_resource type="Animation" id="Animation_ay2tr"]
+resource_name = "MoveRight"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.46651652, 1.0000001, 0.4665164),
+"update": 0,
+"values": [Vector2(69, 51), Vector2(69, 32), Vector2(69, 51)]
+}
+
+[sub_resource type="Animation" id="Animation_bke53"]
+resource_name = "MoveUp"
+step = 0.0023
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5011494, 1),
+"transitions": PackedFloat32Array(0.46651652, 1.0000001, 0.4665164),
+"update": 0,
+"values": [Vector2(69, 51), Vector2(69, 35), Vector2(69, 51)]
+}
+
+[sub_resource type="Animation" id="Animation_0bdai"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(69, 51)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyoy6"]
+_data = {
+&"MoveDown": SubResource("Animation_p10r7"),
+&"MoveLeft": SubResource("Animation_lqjtr"),
+&"MoveRight": SubResource("Animation_ay2tr"),
+&"MoveUp": SubResource("Animation_bke53"),
+&"RESET": SubResource("Animation_0bdai")
+}
+
 [node name="Character" type="CharacterBody2D" unique_id=1802027578]
 script = ExtResource("1_yk651")
+moveSpeed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=97896159]
 position = Vector2(69.5, 50.5)
@@ -164,8 +252,11 @@ shape = SubResource("RectangleShape2D_yk651")
 texture_filter = 1
 position = Vector2(69, 51)
 sprite_frames = SubResource("SpriteFrames_0bdai")
-animation = &"jump"
-frame_progress = 0.032758422
+animation = &"idle"
+frame_progress = 0.095573545
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1030735186]
 position = Vector2(69, 51)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176520939]
+libraries/ = SubResource("AnimationLibrary_oyoy6")
