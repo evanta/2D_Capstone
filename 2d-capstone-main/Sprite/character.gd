@@ -3,22 +3,35 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
+
 @export var cameraZoom: float = 1.1
 @export var moveSpeed: float = 2.0
+@export var XgridOffset: float = 1.0 #adjust the x position of the characture on the grid
+@export var YgridOffset: float = 1.0 #adjust the y position of the characture on the grid
 
-const tile_size = Vector2(32, 32)
-const vector_down = Vector2(0, tile_size.y)
-const vector_up = Vector2(0, -tile_size.y)
-const vector_right = Vector2(tile_size.x, 0)
-const vector_left = Vector2(-tile_size.x, 0)
+@onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap") #add the path to the tile map that you want the characture to snap to.
+
+var tile_size: Vector2
+var vector_down: Vector2
+var vector_up: Vector2
+var vector_right: Vector2
+var vector_left: Vector2
 
 var is_moving := false
 
 func _ready():
-	print("start")
+	tile_size = Vector2(tile_map.tile_set.tile_size)
+	vector_down = Vector2(0, tile_size.y)
+	vector_up = Vector2(0, -tile_size.y)
+	vector_right = Vector2(tile_size.x, 0)
+	vector_left = Vector2(-tile_size.x, 0)
+	position = position.snapped(tile_size) + Vector2(tile_size.x / XgridOffset, tile_size.y / YgridOffset)
 	anim.speed_scale = moveSpeed
 	camera_2d.zoom = Vector2(cameraZoom, cameraZoom)
 	sprite.play("idle")
+	print("tile_size from TileMap: ", tile_size)
+	print("character start position: ", position)
+
 
 func _input(event):
 	if is_moving:
@@ -38,6 +51,8 @@ func _move(direction: Vector2, anim_name: String):
 	is_moving = true
 	anim.play(anim_name)
 	var tween = create_tween()
-	tween.tween_property(self, "position", position + direction, 1.0 / moveSpeed)
+	var target = position + direction
+	print("moving to: ", target)
+	tween.tween_property(self, "position", target, 1.0 / moveSpeed)
 	tween.finished.connect(func(): is_moving = false)
 	
