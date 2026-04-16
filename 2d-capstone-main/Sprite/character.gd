@@ -6,8 +6,11 @@ extends CharacterBody2D
 
 @export var cameraZoom: float = 1.1
 @export var moveSpeed: float = 2.0
+@export var timeOffBeat: float = 0.15
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap") #add the path to the tile map that you want the characture to snap to.
+
+@onready var conductor = get_parent().get_node("Conductor")
 
 var tile_size: Vector2
 var vector_down: Vector2
@@ -16,6 +19,7 @@ var vector_right: Vector2
 var vector_left: Vector2
 
 var is_moving := false
+var instance = null
 
 func _ready():
 	if tile_map == null:
@@ -36,6 +40,8 @@ func _ready():
 
 
 func _input(event):
+	if conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
+		return
 	if is_moving:
 		return
 	if event.is_action_pressed("ui_right"):
