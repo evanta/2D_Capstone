@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var cameraZoom: float = 1.1
 @export var moveSpeed: float = 2.0
 @export var timeOffBeat: float = 0.15
+@export var playerHealth: float = 100
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap") #add the path to the tile map that you want the characture to snap to.
 @onready var MissAnim = $MissText/AnimationPlayer
@@ -44,6 +45,7 @@ func _ready():
 func _input(event): #if the play tries to move not on beat, this function returns. When the Music stops, the player can move freely
 	if conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		_show_miss()
+		playerHealth -= 5
 		return
 
 	if is_moving:
