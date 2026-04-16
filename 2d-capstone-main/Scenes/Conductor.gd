@@ -20,6 +20,12 @@ signal measure_signal(position)
 
 func _ready():
 	sec_per_beat = 60.0 / bpm
+	finished.connect(_on_song_finished)
+	play()
+
+func _on_song_finished():
+	last_reported_beat = 0
+	measure = 1
 	play()
 
 func _physics_process(_delta):

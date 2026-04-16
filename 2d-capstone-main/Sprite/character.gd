@@ -42,7 +42,12 @@ func _ready():
 	print("character start position: ", position)
 
 
-func _input(event): #if the play tries to move not on beat, this function returns. When the Music stops, the player can move freely
+func _input(event):
+	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or \
+			event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
+		return
+	if event.is_echo():
+		return
 	if conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		_show_miss()
 		playerHealth -= 5
@@ -62,8 +67,8 @@ func _input(event): #if the play tries to move not on beat, this function return
 		_move(vector_down, "MoveDown")
 
 func _show_miss():
-	#if MissAnim.is_playing():
-	#	return
+	if MissAnim.is_playing():
+		return
 	MissSprite.modulate.a = 1.0
 	MissAnim.play("MissFloat")
 	await MissAnim.animation_finished
@@ -71,8 +76,8 @@ func _show_miss():
 	tween.tween_property(MissSprite, "modulate:a", 0.0, 0.3)
 
 func _move(direction: Vector2, anim_name: String):
-	if test_move(transform, direction):
-		return  # blocked by a collision tile
+	#if test_move(transform, direction):
+		#return  # blocked by a collision tile
 	is_moving = true
 	anim.play(anim_name)
 	var tween = create_tween()
