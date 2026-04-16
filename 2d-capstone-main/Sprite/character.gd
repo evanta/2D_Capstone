@@ -39,9 +39,10 @@ func _ready():
 	print("character start position: ", position)
 
 
-func _input(event):
+func _input(event): #if the play tries to move not on beat, this function returns. When the Music stops, the player can move freely
 	if conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		return
+
 	if is_moving:
 		return
 	if event.is_action_pressed("ui_right"):
