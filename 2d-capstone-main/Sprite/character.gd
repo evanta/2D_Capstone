@@ -9,7 +9,8 @@ extends CharacterBody2D
 @export var timeOffBeat: float = 0.15
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap") #add the path to the tile map that you want the characture to snap to.
-
+@onready var MissAnim = $MissText/AnimationPlayer
+@onready var MissSprite = $MissText/Sprite2D
 @onready var conductor = get_parent().get_node("Conductor")
 
 var tile_size: Vector2
@@ -35,12 +36,14 @@ func _ready():
 	anim.speed_scale = moveSpeed
 	camera_2d.zoom = Vector2(cameraZoom, cameraZoom)
 	sprite.play("idle")
+	MissSprite.modulate.a = 0
 	print("tile_size from TileMap: ", tile_size)
 	print("character start position: ", position)
 
 
 func _input(event): #if the play tries to move not on beat, this function returns. When the Music stops, the player can move freely
 	if conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
+		_show_miss()
 		return
 
 	if is_moving:
@@ -55,6 +58,15 @@ func _input(event): #if the play tries to move not on beat, this function return
 		_move(vector_up, "MoveUp")
 	elif event.is_action_pressed("ui_down"):
 		_move(vector_down, "MoveDown")
+
+func _show_miss():
+	#if MissAnim.is_playing():
+	#	return
+	MissSprite.modulate.a = 1.0
+	MissAnim.play("MissFloat")
+	await MissAnim.animation_finished
+	var tween = create_tween()
+	tween.tween_property(MissSprite, "modulate:a", 0.0, 0.3)
 
 func _move(direction: Vector2, anim_name: String):
 	if test_move(transform, direction):

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpyg0ol5n5luc" path="res://Sprite/character.gd" id="1_yk651"]
 [ext_resource type="Texture2D" uid="uid://c3jy6cmsdp0jk" path="res://Assets/DemoAssets/knight.png" id="2_yk651"]
+[ext_resource type="PackedScene" uid="uid://ct6gymsi2qyav" path="res://Sprite/MissText.tscn" id="3_p10r7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p10r7"]
 atlas = ExtResource("2_yk651")
@@ -264,3 +265,6 @@ shape = SubResource("RectangleShape2D_yk651")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176520939]
 libraries/ = SubResource("AnimationLibrary_oyoy6")
+
+[node name="MissText" parent="." unique_id=1464113854 instance=ExtResource("3_p10r7")]
+scale = Vector2(0.36, 0.36)

@@ -365,9 +365,9 @@ tile_map_data = PackedByteArray("AAAAAAQAAQAAAAoAAAABAAQAAQAAAAAAAAACAAQAAQAAAAo
 tile_set = SubResource("TileSet_4cx8u")
 
 [node name="Conductor" parent="." unique_id=1174756302 instance=ExtResource("3_8bwi6")]
-measures = 125
+measures = 250
 
 [node name="Character" parent="." unique_id=1802027578 instance=ExtResource("2_u4uqp")]
-position = Vector2(226, 456)
+position = Vector2(210, 443)
 cameraZoom = 7.0
 moveSpeed = 2.0
