@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cw4yp4k5n1m4d"
+path="res://.godot/imported/2D game song.wav-be184ca756120b7f71fcf3a5a0db856e.sample"
+
+[deps]
+
+source_file="res://Assets/Songs/2D game song.wav"
+dest_files=["res://.godot/imported/2D game song.wav-be184ca756120b7f71fcf3a5a0db856e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
