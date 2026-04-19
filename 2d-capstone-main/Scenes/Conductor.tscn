@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://316pu1wh05fd"]
+
+[ext_resource type="AudioStream" uid="uid://cw4yp4k5n1m4d" path="res://Assets/Songs/ 2D game song.wav" id="1_5rtww"]
+[ext_resource type="Script" uid="uid://cby5pqwddywv7" path="res://Scenes/Conductor.gd" id="2_gj22s"]
+
+[node name="Conductor" type="AudioStreamPlayer" unique_id=1174756302]
+stream = ExtResource("1_5rtww")
+script = ExtResource("2_gj22s")
+
+[node name="StartTimer" type="Timer" parent="." unique_id=167114129]
+one_shot = true
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
