@@ -3,10 +3,11 @@ extends CharacterBody2D
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var conductor = get_parent().get_node("Conductor")
-@onready var player = get_parent().get_node("Character")
+@onready var conductor = get_parent().get_parent().get_parent().get_node("Conductor")
+@onready var player = get_parent().get_parent().get_parent().get_node("Character")
 
-@onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
+@onready var tile_map: TileMapLayer = get_parent().get_parent().get_node("GroundTileMap")
+@onready var corrupt_map: TileMapLayer = get_parent().get_node("CorruptMapLayer")
 
 @export var cameraZoom: float = 1.1
 
@@ -81,7 +82,14 @@ func _on_beat(_beat_index):
 		direction = Vector2(0, sign(diff.y))
 
 	if direction != Vector2.ZERO:
-		_move(direction)
+		var target = global_position + direction * tile_size
+		if _is_in_corrupt_area(player.global_position) and _is_in_corrupt_area(target):
+			_move(direction)
+
+
+func _is_in_corrupt_area(world_pos: Vector2) -> bool:
+	var map_pos = corrupt_map.local_to_map(corrupt_map.to_local(world_pos))
+	return corrupt_map.get_cell_source_id(map_pos) != -1
 
 
 # ========================
