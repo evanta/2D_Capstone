@@ -82,7 +82,7 @@ func _move(direction: Vector2, anim_name: String):
 	anim.play(anim_name)
 	var tween = create_tween()
 	var target = position + direction
-	print("moving to: ", target)
+	#print("moving to: ", target)
 	tween.tween_property(self, "position", target, 0.5 / moveSpeed)
 	tween.finished.connect(func(): is_moving = false)
 	
