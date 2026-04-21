@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal healthChanged
+
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
@@ -7,7 +9,8 @@ extends CharacterBody2D
 @export var cameraZoom: float = 1.1
 @export var moveSpeed: float = 2.0
 @export var timeOffBeat: float = 0.15
-@export var playerHealth: float = 100
+@export var maxHealth: float = 100
+@export var currentHealth: float = maxHealth
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
 const MISS_SCENE = preload("res://Sprite/MissText.tscn")
@@ -23,6 +26,9 @@ var vector_left: Vector2
 var is_moving := false
 var instance = null
 var in_corrupt_area := false
+var is_invincible = false
+var is_dead = false
+@export var invincible_time = 0.5
 
 func _ready():
 	if tile_map == null:
@@ -56,8 +62,7 @@ func _input(event):
 	
 	if in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		_show_miss()
-		playerHealth -= 5
-		print(playerHealth)
+		take_damage(1)
 		return
 
 	if is_moving:
@@ -106,3 +111,28 @@ func _on_corrupt_exited(body: Node2D) -> void:
 	if body == self:
 		in_corrupt_area = false
 		print("exited corrupt area")
+		
+# ===== Damage & Health =====
+func take_damage(amount):
+	if is_invincible or is_dead:
+		return
+
+	is_invincible = true
+	start_invincibility()
+
+	currentHealth -= amount
+	healthChanged.emit()
+	print(currentHealth)
+
+	if currentHealth <= 0:
+		is_dead = true
+
+func start_invincibility():
+	if sprite:
+		sprite.modulate = Color(1, 0.5, 0.5)  # Flash red
+
+	await get_tree().create_timer(invincible_time).timeout
+	is_invincible = false
+
+	if sprite:
+		sprite.modulate = Color(1, 1, 1)  # Back to normal

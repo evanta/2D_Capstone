@@ -4834,7 +4834,7 @@ cameraZoom = 7.0
 moveSpeed = 2.0
 
 [node name="HealthBar" parent="Character" unique_id=1391395372 instance=ExtResource("9_6qqx0")]
-offset_left = -80.0
-offset_top = -44.0
-offset_right = -16.0
-offset_bottom = -14.0
+offset_left = -36.0
+offset_top = -39.0
+offset_right = -9.0
+offset_bottom = -12.0
