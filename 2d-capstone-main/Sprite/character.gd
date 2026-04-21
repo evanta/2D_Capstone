@@ -9,10 +9,10 @@ extends CharacterBody2D
 @export var timeOffBeat: float = 0.15
 @export var playerHealth: float = 100
 
-@onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap") #add the path to the tile map that you want the characture to snap to.
-@onready var MissAnim = $MissText/AnimationPlayer
-@onready var MissSprite = $MissText/Sprite2D
+@onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
+const MISS_SCENE = preload("res://Sprite/MissText.tscn")
 @onready var conductor = get_parent().get_node("Conductor")
+var corrupt_areas: Array[Area2D] = []
 
 var tile_size: Vector2
 var vector_down: Vector2
@@ -22,6 +22,7 @@ var vector_left: Vector2
 
 var is_moving := false
 var instance = null
+var in_corrupt_area := false
 
 func _ready():
 	if tile_map == null:
@@ -37,7 +38,10 @@ func _ready():
 	anim.speed_scale = moveSpeed
 	camera_2d.zoom = Vector2(cameraZoom, cameraZoom)
 	sprite.play("idle")
-	MissSprite.modulate.a = 0
+	corrupt_areas = get_parent().corrupt_areas
+	for area in corrupt_areas:
+		area.body_entered.connect(_on_corrupt_entered)
+		area.body_exited.connect(_on_corrupt_exited)
 	print("tile_size from TileMap: ", tile_size)
 	print("character start position: ", position)
 
@@ -46,11 +50,14 @@ func _input(event):
 	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or \
 			event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
 		return
+		
 	if event.is_echo():
 		return
-	if conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
+	
+	if in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		_show_miss()
 		playerHealth -= 5
+		print(playerHealth)
 		return
 
 	if is_moving:
@@ -67,13 +74,17 @@ func _input(event):
 		_move(vector_down, "MoveDown")
 
 func _show_miss():
-	if MissAnim.is_playing():
-		return
-	MissSprite.modulate.a = 1.0
-	MissAnim.play("MissFloat")
-	await MissAnim.animation_finished
+	var miss = MISS_SCENE.instantiate()
+	add_child(miss)
+	var miss_anim: AnimationPlayer = miss.get_node("AnimationPlayer")
+	var miss_sprite: Sprite2D = miss.get_node("Sprite2D")
+	miss_sprite.modulate.a = 1.0
+	miss_anim.play("MissFloat")
+	await miss_anim.animation_finished
 	var tween = create_tween()
-	tween.tween_property(MissSprite, "modulate:a", 0.0, 0.3)
+	tween.tween_property(miss_sprite, "modulate:a", 0.0, 0.3)
+	await tween.finished
+	miss.queue_free()
 
 func _move(direction: Vector2, anim_name: String):
 	#if test_move(transform, direction):
@@ -82,7 +93,16 @@ func _move(direction: Vector2, anim_name: String):
 	anim.play(anim_name)
 	var tween = create_tween()
 	var target = position + direction
-	print("moving to: ", target)
+	#print("moving to: ", target)
 	tween.tween_property(self, "position", target, 0.5 / moveSpeed)
 	tween.finished.connect(func(): is_moving = false)
 	
+func _on_corrupt_entered(body: Node2D) -> void:
+	if body == self:
+		in_corrupt_area = true
+		print("entered corrupt area")
+
+func _on_corrupt_exited(body: Node2D) -> void:
+	if body == self:
+		in_corrupt_area = false
+		print("exited corrupt area")

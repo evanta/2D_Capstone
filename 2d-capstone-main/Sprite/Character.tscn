@@ -267,4 +267,3 @@ shape = SubResource("RectangleShape2D_yk651")
 libraries/ = SubResource("AnimationLibrary_oyoy6")
 
 [node name="MissText" parent="." unique_id=1464113854 instance=ExtResource("3_p10r7")]
-scale = Vector2(0.36, 0.36)

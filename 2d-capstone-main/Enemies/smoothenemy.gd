@@ -2,13 +2,16 @@ extends CharacterBody2D
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
-@onready var conductor = get_parent().get_node("Conductor")
+@onready var camera_2d: Camera2D = $Camera2D
+@onready var conductor = get_parent().get_parent().get_parent().get_node("Conductor")
+@onready var player = get_parent().get_parent().get_parent().get_node("Character")
 
-@onready var player = get_parent().get_node("Character")
-@onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
+@onready var tile_map: TileMapLayer = get_parent().get_parent().get_node("GroundTileMap")
+@onready var corrupt_map: TileMapLayer = get_parent().get_node("CorruptMapLayer")
+
+@export var cameraZoom: float = 1.1
 
 var tile_size: Vector2
-
 var vector_down: Vector2
 var vector_up: Vector2
 var vector_right: Vector2
@@ -34,8 +37,10 @@ func _ready():
 
 	sprite.play("idle")
 
+	# snap to grid ONCE
 	_snap_to_grid()
 
+	# STRICT rhythm connection
 	conductor.beat.connect(_on_beat)
 
 
@@ -53,13 +58,14 @@ func _snap_to_grid():
 
 
 # ========================
-# BEAT LOGIC (NECRODANCER STYLE)
+# BEAT LOGIC (CORE AI)
 # ========================
 func _on_beat(_beat_index):
 	if is_moving:
 		return
 
 	if player == null:
+		print("NO PLAYER FOUND")
 		return
 
 	var enemy_cell = world_to_cell(global_position)
@@ -69,56 +75,43 @@ func _on_beat(_beat_index):
 
 	var direction = Vector2.ZERO
 
-	# axis priority chase (classic rhythm AI)
+	# NecroDancer-style axis priority chase
 	if abs(diff.x) > abs(diff.y):
 		direction = Vector2(sign(diff.x), 0)
 	elif diff.y != 0:
 		direction = Vector2(0, sign(diff.y))
 
 	if direction != Vector2.ZERO:
-		_move(direction)
+		var target = global_position + direction * tile_size
+		if _is_in_corrupt_area(player.global_position) and _is_in_corrupt_area(target):
+			_move(direction)
+
+
+func _is_in_corrupt_area(world_pos: Vector2) -> bool:
+	var map_pos = corrupt_map.local_to_map(corrupt_map.to_local(world_pos))
+	return corrupt_map.get_cell_source_id(map_pos) != -1
 
 
 # ========================
-# JUMP MOVEMENT (RHYTHM HOP)
+# MOVEMENT
 # ========================
 func _move(direction: Vector2):
 	is_moving = true
 
-	var start_pos = global_position
-	var target_pos = global_position + direction * tile_size
+	var target = global_position + direction * tile_size
 
 	anim.play(_get_anim_name(direction))
 
 	var tween = create_tween()
-	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat)
+	tween.tween_property(self, "global_position", target, conductor.sec_per_beat)
 
 	tween.finished.connect(_on_move_finished)
 
 
-# ========================
-# JUMP ARC (VISUAL RHYTHM HOP)
-# ========================
-func _jump_arc(t: float, start: Vector2, target: Vector2):
-	var pos = start.lerp(target, t)
-
-	# arc height (tweak for feel)
-	var height = -tile_size.y * 0.35
-	var arc = 4 * height * (t - t * t)
-
-	global_position = pos + Vector2(0, arc)
-
-
-# ========================
-# FINISH MOVE
-# ========================
 func _on_move_finished():
 	is_moving = false
-
-	# hard snap to grid to prevent drift
-	global_position = cell_to_world(world_to_cell(global_position))
-
 	sprite.play("idle")
+	_snap_to_grid()
 
 
 # ========================
