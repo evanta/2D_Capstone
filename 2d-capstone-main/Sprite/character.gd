@@ -87,8 +87,8 @@ func _show_miss():
 	miss.queue_free()
 
 func _move(direction: Vector2, anim_name: String):
-	#if test_move(transform, direction):
-		#return  # blocked by a collision tile
+	if test_move(transform, direction):
+		return
 	is_moving = true
 	anim.play(anim_name)
 	var tween = create_tween()

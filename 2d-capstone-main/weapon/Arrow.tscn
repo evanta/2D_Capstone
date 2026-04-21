@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c00foyf0ji4g0"]
+
+[ext_resource type="Script" uid="uid://cjx4pwxwquam1" path="res://Weapons/Bow/Arrow.gd" id="1_2w1vu"]
+[ext_resource type="Texture2D" uid="uid://d3qmaxlqk7600" path="res://Weapons/Bow/Screenshot_2026-03-06_at_12.11.42_PM-removebg-preview.png" id="2_18lpa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4aqte"]
+size = Vector2(43, 11)
+
+[node name="Arrow" type="Area2D" unique_id=2142765990]
+script = ExtResource("1_2w1vu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1861783244]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4aqte")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1627528391]
+z_index = 1
+position = Vector2(-0.17770101, 0.32891774)
+rotation = 1.5707964
+scale = Vector2(0.07700223, 0.060638815)
+texture = ExtResource("2_18lpa")

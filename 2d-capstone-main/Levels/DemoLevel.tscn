@@ -4828,6 +4828,6 @@ position = Vector2(-32, -8)
 measures = 125
 
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("2_u4uqp")]
-position = Vector2(328, 344)
+position = Vector2(176, 440)
 cameraZoom = 7.0
 moveSpeed = 2.0
