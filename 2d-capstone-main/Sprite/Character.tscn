@@ -246,6 +246,7 @@ _data = {
 }
 
 [node name="Character" type="CharacterBody2D" unique_id=1802027578]
+collision_mask = 3
 script = ExtResource("1_yk651")
 moveSpeed = 1.0
 

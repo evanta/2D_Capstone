@@ -4,44 +4,34 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var conductor = get_parent().get_parent().get_parent().get_node("Conductor")
 
-@onready var player = get_parent().get_parent().get_parent().get_node("Character")
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var tile_map: TileMapLayer = get_parent().get_parent().get_node("GroundTileMap")
 @onready var corrupt_map: TileMapLayer = get_parent().get_node("CorruptMapLayer")
 
 var tile_size: Vector2
 
-var vector_down: Vector2
-var vector_up: Vector2
-var vector_right: Vector2
-var vector_left: Vector2
-
 var is_moving := false
+var can_damage := true
+var attack_cooldown_beats := 0
+var damage := 10
 
 
 # ========================
 # SETUP
 # ========================
 func _ready():
-	if tile_map == null:
-		push_warning("TileMap not found")
-		return
+	add_to_group("enemy")
 
 	tile_size = Vector2(tile_map.tile_set.tile_size)
 
-	vector_down = Vector2(0, tile_size.y)
-	vector_up = Vector2(0, -tile_size.y)
-	vector_right = Vector2(tile_size.x, 0)
-	vector_left = Vector2(-tile_size.x, 0)
-
 	sprite.play("idle")
-
 	_snap_to_grid()
 
 	conductor.beat.connect(_on_beat)
 
 
 # ========================
-# GRID HELPERS
+# GRID
 # ========================
 func world_to_cell(pos: Vector2) -> Vector2:
 	return (pos / tile_size).floor()
@@ -54,49 +44,85 @@ func _snap_to_grid():
 
 
 # ========================
-# BEAT LOGIC (NECRODANCER STYLE)
+# CORRUPTION RULE
 # ========================
-func _on_beat(_beat_index):
-	if is_moving:
-		return
-
-	if player == null:
-		return
-
-	var enemy_cell = world_to_cell(global_position)
-	var player_cell = world_to_cell(player.global_position)
-
-	var diff = player_cell - enemy_cell
-
-	var direction = Vector2.ZERO
-
-	# axis priority chase (classic rhythm AI)
-	if abs(diff.x) > abs(diff.y):
-		direction = Vector2(sign(diff.x), 0)
-	elif diff.y != 0:
-		direction = Vector2(0, sign(diff.y))
-
-	if direction != Vector2.ZERO:
-		var target = global_position + direction * tile_size
-		if _is_in_corrupt_area(player.global_position) and _is_in_corrupt_area(target):
-			_move(direction)
-
-
-func _is_in_corrupt_area(world_pos: Vector2) -> bool:
+func is_corrupt(cell: Vector2) -> bool:
+	var world_pos = cell_to_world(cell)
 	var map_pos = corrupt_map.local_to_map(corrupt_map.to_local(world_pos))
 	return corrupt_map.get_cell_source_id(map_pos) != -1
 
 
 # ========================
-# JUMP MOVEMENT (RHYTHM HOP)
+# OCCUPANCY
+# ========================
+func is_cell_occupied(cell: Vector2) -> bool:
+	for e in get_tree().get_nodes_in_group("enemy"):
+		if e != self and world_to_cell(e.global_position) == cell:
+			return true
+	return false
+
+
+# ========================
+# BEAT AI
+# ========================
+func _on_beat(_beat_index):
+	if attack_cooldown_beats > 0:
+		attack_cooldown_beats -= 1
+
+	if is_moving or player == null:
+		return
+
+	var enemy_cell = world_to_cell(global_position)
+	var player_cell = world_to_cell(player.global_position)
+
+	if not is_corrupt(enemy_cell):
+		return
+
+	if not is_corrupt(player_cell):
+		return
+
+	var diff = player_cell - enemy_cell
+	var direction = Vector2.ZERO
+
+	if abs(diff.x) > abs(diff.y):
+		direction = Vector2(sign(diff.x), 0)
+	elif diff.y != 0:
+		direction = Vector2(0, sign(diff.y))
+
+	var target_cell = enemy_cell + direction
+
+	if is_corrupt(target_cell):
+		_move(direction)
+
+
+# ========================
+# MOVE (JUMP)
 # ========================
 func _move(direction: Vector2):
 	is_moving = true
 
-	var start_pos = global_position
-	var target_pos = global_position + direction * tile_size
+	var start_cell = world_to_cell(global_position)
+	var target_cell = start_cell
+
+	if abs(direction.x) > abs(direction.y):
+		target_cell += Vector2(sign(direction.x), 0)
+	else:
+		target_cell += Vector2(0, sign(direction.y))
+
+	if not is_corrupt(target_cell):
+		is_moving = false
+		return
+
+	if is_cell_occupied(target_cell):
+		is_moving = false
+		return
+
+	var start_pos = cell_to_world(start_cell)
+	var target_pos = cell_to_world(target_cell)
 
 	anim.play(_get_anim_name(direction))
+
+	_check_damage(target_cell)
 
 	var tween = create_tween()
 	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat)
@@ -105,12 +131,11 @@ func _move(direction: Vector2):
 
 
 # ========================
-# JUMP ARC (VISUAL RHYTHM HOP)
+# JUMP ARC
 # ========================
 func _jump_arc(t: float, start: Vector2, target: Vector2):
 	var pos = start.lerp(target, t)
 
-	# arc height (tweak for feel)
 	var height = -tile_size.y * 0.35
 	var arc = 4 * height * (t - t * t)
 
@@ -118,29 +143,93 @@ func _jump_arc(t: float, start: Vector2, target: Vector2):
 
 
 # ========================
-# FINISH MOVE
+# DAMAGE
+# ========================
+func _check_damage(target_cell: Vector2):
+	if not can_damage or player == null:
+		return
+
+	if attack_cooldown_beats > 0:
+		return
+
+	if world_to_cell(player.global_position) == target_cell:
+		player.take_damage(damage)
+
+		var knock_dir = (player.global_position - global_position).normalized()
+		_knockback(knock_dir)
+
+		attack_cooldown_beats = 2
+		_start_damage_cooldown()
+
+
+func _start_damage_cooldown():
+	can_damage = false
+	await get_tree().create_timer(0.5).timeout
+	can_damage = true
+
+
+# ========================
+# KNOCKBACK
+# ========================
+func _knockback(direction: Vector2):
+	is_moving = true
+
+	var start_cell = world_to_cell(global_position)
+	var target_cell = _find_knockback_cell(start_cell, direction)
+
+	var start_pos = cell_to_world(start_cell)
+	var target_pos = cell_to_world(target_cell)
+
+	var tween = create_tween()
+	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat * 0.4)
+
+	tween.finished.connect(func():
+		is_moving = false
+		global_position = target_pos
+	)
+
+
+func _find_knockback_cell(start_cell: Vector2, direction: Vector2) -> Vector2:
+	var options = []
+
+	if abs(direction.x) > abs(direction.y):
+		options = [
+			start_cell + Vector2(sign(direction.x), 0),
+			start_cell + Vector2(0, 1),
+			start_cell + Vector2(0, -1)
+		]
+	else:
+		options = [
+			start_cell + Vector2(0, sign(direction.y)),
+			start_cell + Vector2(1, 0),
+			start_cell + Vector2(-1, 0)
+		]
+
+	for c in options:
+		if is_corrupt(c) and not is_cell_occupied(c):
+			return c
+
+	return start_cell
+
+
+# ========================
+# FINISH
 # ========================
 func _on_move_finished():
 	is_moving = false
-
-	# hard snap to grid to prevent drift
 	global_position = cell_to_world(world_to_cell(global_position))
-
 	sprite.play("idle")
 
 
-# ========================
-# ANIMATION
-# ========================
 func _get_anim_name(direction: Vector2) -> String:
-	if direction == vector_right:
+	if direction == Vector2.RIGHT:
 		sprite.flip_h = false
 		return "MoveRight"
-	elif direction == vector_left:
+	elif direction == Vector2.LEFT:
 		sprite.flip_h = true
 		return "MoveLeft"
-	elif direction == vector_up:
+	elif direction == Vector2.UP:
 		return "MoveUp"
-	elif direction == vector_down:
+	elif direction == Vector2.DOWN:
 		return "MoveDown"
 	return "idle"
