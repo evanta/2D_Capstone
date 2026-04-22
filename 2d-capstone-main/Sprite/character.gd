@@ -112,6 +112,9 @@ func _on_beat(_beat_index):
 # MOVE
 # ========================
 func _move(direction: Vector2, anim_name: String):
+	if test_move(transform, direction):
+		return
+
 	is_moving = true
 	anim.play(anim_name)
 
