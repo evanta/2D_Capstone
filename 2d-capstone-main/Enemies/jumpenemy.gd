@@ -13,8 +13,11 @@ var tile_size: Vector2
 var is_moving := false
 var can_damage := true
 var attack_cooldown_beats := 0
-var damage := 10
 
+@export var damage: float = 10 #damage that the enemy does to the player
+
+@export var speed: float = 1 #how fast does the enemy move twords and attack the player
+#smaller number means slower
 
 # ========================
 # SETUP
@@ -122,11 +125,17 @@ func _move(direction: Vector2):
 
 	anim.play(_get_anim_name(direction))
 
-	_check_damage(target_cell)
+	if player != null and world_to_cell(player.global_position) == target_cell:
+		_check_damage(target_cell)
+		var lunge_pos = start_pos.lerp(target_pos, 0.4)
+		var tween = create_tween()
+		tween.tween_property(self, "global_position", lunge_pos, conductor.sec_per_beat / speed * 0.3)
+		tween.tween_property(self, "global_position", start_pos, conductor.sec_per_beat / speed * 0.3)
+		tween.finished.connect(_on_move_finished)
+		return
 
 	var tween = create_tween()
-	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat)
-
+	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat / speed)
 	tween.finished.connect(_on_move_finished)
 
 
@@ -154,10 +163,6 @@ func _check_damage(target_cell: Vector2):
 
 	if world_to_cell(player.global_position) == target_cell:
 		player.take_damage(damage)
-
-		var knock_dir = (player.global_position - global_position).normalized()
-		_knockback(knock_dir)
-
 		attack_cooldown_beats = 2
 		_start_damage_cooldown()
 
@@ -181,7 +186,7 @@ func _knockback(direction: Vector2):
 	var target_pos = cell_to_world(target_cell)
 
 	var tween = create_tween()
-	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat * 0.4)
+	tween.tween_method(_jump_arc.bind(start_pos, target_pos), 0.0, 1.0, conductor.sec_per_beat / speed * 0.4)
 
 	tween.finished.connect(func():
 		is_moving = false
