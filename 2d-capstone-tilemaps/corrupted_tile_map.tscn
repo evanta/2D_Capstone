@@ -1,13 +1,13 @@
-[gd_scene format=4 uid="uid://u3pia8aj8y0r"]
+[gd_scene format=4 uid="uid://dps2ii6l6ol0u"]
 
-[ext_resource type="Texture2D" uid="uid://cmmkru168v4ka" path="res://Pixel Crawler - Fairy Forest 1.7/Master_Tileset.png" id="1_7yhko"]
-[ext_resource type="Texture2D" uid="uid://7oqaypnpwa03" path="res://Pixel Crawler - Fairy Forest 1.7/Assets/Tilesmodified.png" id="1_xftlc"]
-[ext_resource type="Texture2D" uid="uid://nwxdiw0y1jtg" path="res://Pixel Crawler - Fairy Forest 1.7/Assets/Treesmodified.png" id="2_anah5"]
-[ext_resource type="Texture2D" uid="uid://dpp4kswc7rvtv" path="res://Pixel Crawler - Fairy Forest 1.7/Assets/Propsmodified.png" id="4_qtlnl"]
-[ext_resource type="Texture2D" uid="uid://dyf5dirb3m16k" path="res://Pixel Crawler - Fairy Forest 1.7/fairy forest example.png" id="5_2cfip"]
+[ext_resource type="Texture2D" uid="uid://7oqaypnpwa03" path="res://Pixel Crawler - Fairy Forest 1.7/Assets/Tilesmodified.png" id="1_k4kfh"]
+[ext_resource type="Texture2D" uid="uid://nwxdiw0y1jtg" path="res://Pixel Crawler - Fairy Forest 1.7/Assets/Treesmodified.png" id="2_hta3l"]
+[ext_resource type="Texture2D" uid="uid://cmmkru168v4ka" path="res://Pixel Crawler - Fairy Forest 1.7/Master_Tileset.png" id="3_01fih"]
+[ext_resource type="Texture2D" uid="uid://dpp4kswc7rvtv" path="res://Pixel Crawler - Fairy Forest 1.7/Assets/Propsmodified.png" id="4_oisw6"]
+[ext_resource type="Texture2D" uid="uid://dyf5dirb3m16k" path="res://Pixel Crawler - Fairy Forest 1.7/fairy forest example.png" id="5_6rvso"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqirv"]
-texture = ExtResource("1_xftlc")
+texture = ExtResource("1_k4kfh")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -345,7 +345,7 @@ texture = ExtResource("1_xftlc")
 8:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c81vo"]
-texture = ExtResource("2_anah5")
+texture = ExtResource("2_hta3l")
 30:0/0 = 0
 31:0/0 = 0
 32:0/0 = 0
@@ -4851,7 +4851,7 @@ texture = ExtResource("2_anah5")
 99:103/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1n30v"]
-texture = ExtResource("1_7yhko")
+texture = ExtResource("3_01fih")
 0:3/0 = 0
 0:4/0 = 0
 0:5/0 = 0
@@ -11152,7 +11152,7 @@ texture = ExtResource("1_7yhko")
 23:191/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6cpi"]
-texture = ExtResource("4_qtlnl")
+texture = ExtResource("4_oisw6")
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -11631,7 +11631,7 @@ texture = ExtResource("4_qtlnl")
 31:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xftlc"]
-texture = ExtResource("4_qtlnl")
+texture = ExtResource("4_oisw6")
 13:11/animation_columns = 5
 13:11/animation_frame_0/duration = 1.0
 13:11/animation_frame_1/duration = 1.0
@@ -11727,4 +11727,4 @@ tile_set = SubResource("TileSet_35kre")
 [node name="FairyForestExample" type="Sprite2D" parent="." unique_id=1083624601]
 position = Vector2(2248, 1264)
 scale = Vector2(0.2975, 0.32250002)
-texture = ExtResource("5_2cfip")
+texture = ExtResource("5_6rvso")
