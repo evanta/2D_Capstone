@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://gfxdou6wtbom"]
+
+[ext_resource type="Texture2D" uid="uid://di4r8euqjfpcn" path="res://weapon/wand.png" id="1_30mn6"]
+[ext_resource type="Script" uid="uid://b23pafo82i82s" path="res://weapon/wand.gd" id="1_odxgx"]
+
+[node name="wand_body" type="Node2D" unique_id=1805183596]
+script = ExtResource("1_odxgx")
+
+[node name="Wand" type="Sprite2D" parent="." unique_id=1519811770]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_30mn6")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=764336114]
+position = Vector2(16, 0)

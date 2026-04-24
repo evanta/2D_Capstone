@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal healthChanged
+signal stepped
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
@@ -12,11 +13,13 @@ signal healthChanged
 @export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
 @export var currentHealth: float = maxHealth #Tracks current healt. 
 @export var offBeatDamage: int = 5
+@export var spellSteps: int = 0
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
 const MISS_SCENE = preload("res://Sprite/MissText.tscn")
 @onready var conductor = get_parent().get_node("Conductor")
 var corrupt_areas: Array[Area2D] = []
+@export var wand_scene = preload("res://weapon/wand.tscn")
 
 var tile_size: Vector2
 var vector_down: Vector2
@@ -30,6 +33,7 @@ var in_corrupt_area := false
 var is_invincible = false
 var is_dead = false
 @export var invincible_time = 0.5
+var wand = null
 
 func _ready():
 	add_to_group("player")
@@ -52,7 +56,22 @@ func _ready():
 		area.body_exited.connect(_on_corrupt_exited)
 	print("tile_size from TileMap: ", tile_size)
 	print("character start position: ", position)
-
+	
+	# Spawn wand
+	wand = wand_scene.instantiate()
+	add_child(wand)
+	wand.owner_body = self
+	wand.position = Vector2(9, 5)
+	
+# ===== Physics =====
+func _physics_process(delta):
+	# Wand rotation and fire
+	if wand:
+		wand.position = Vector2(4, 5)
+		wand.look_at(get_global_mouse_position())
+		
+		if Input.is_action_just_pressed("Fire"):
+			wand.shoot()
 
 func _input(event):
 	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or \
@@ -94,6 +113,9 @@ func _show_miss():
 	miss.queue_free()
 
 func _move(direction: Vector2, anim_name: String):
+	if spellSteps < 10 and in_corrupt_area == true:
+		spellSteps += 1
+		stepped.emit()
 	var collision = move_and_collide(direction, true)
 	if collision != null and not collision.get_collider().is_in_group("enemy"):
 		return
