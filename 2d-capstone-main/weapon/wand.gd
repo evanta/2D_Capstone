@@ -1,24 +1,19 @@
 extends Node2D
 
 var owner_body: CharacterBody2D  # player reference
-@export var SpellScene = preload("res://light_spell.tscn")
-
-func _physics_process(delta):
-	if owner_body == null:
-		return
-
-	# Position wand relative to player
-	position = Vector2(9, 5)  # basic offset
-	# Rotate toward mouse
-	look_at(get_global_mouse_position())
+@export var SpellScene = preload("res://weapon/light_spell.tscn")
 
 func shoot():
 	var spell = SpellScene.instantiate()
 	
-	var direction = (get_global_mouse_position() - $Muzzle.global_position).normalized()
+	var direction = get_parent().last_move_dir
 	
 	spell.global_position = $Muzzle.global_position
 	spell.velocity = direction * spell.speed
 	spell.rotation = direction.angle()
+
 	
+	#var dir = -1.0 if get_parent().scale.x < 0 else 1.0
 	get_tree().current_scene.add_child(spell)
+	
+	

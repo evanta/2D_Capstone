@@ -29,6 +29,7 @@ var vector_left: Vector2
 
 var is_moving := false
 var instance = null
+var last_move_dir: Vector2 = Vector2.RIGHT
 var in_corrupt_area := false
 var is_invincible = false
 var is_dead = false
@@ -67,15 +68,13 @@ func _ready():
 func _physics_process(delta):
 	# Wand rotation and fire
 	if wand:
-		wand.position = Vector2(4, 5)
-		wand.look_at(get_global_mouse_position())
-		
-		if Input.is_action_just_pressed("Fire"):
+		wand.position = Vector2(1, 1)
+		wand.rotation = last_move_dir.angle()
+		if Input.is_action_just_pressed("Fire") and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() <= timeOffBeat:
 			wand.shoot()
 
 func _input(event):
-	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or \
-			event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
+	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
 		return
 		
 	if event.is_echo():
@@ -83,20 +82,27 @@ func _input(event):
 	
 	if not is_invincible and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		_show_miss()
-		take_damage(10)
+		take_damage(offBeatDamage)
 		return
+		
+	#if Input.is_action_just_pressed("Fire"):
+		#wand.shoot()
 
 	if is_moving:
 		return
 	if event.is_action_pressed("ui_right"):
 		sprite.flip_h = false
+		last_move_dir = Vector2.RIGHT
 		_move(vector_right, "MoveRight")
 	elif event.is_action_pressed("ui_left"):
 		sprite.flip_h = true
+		last_move_dir = Vector2.LEFT
 		_move(vector_left, "MoveLeft")
 	elif event.is_action_pressed("ui_up"):
+		last_move_dir = Vector2.UP
 		_move(vector_up, "MoveUp")
 	elif event.is_action_pressed("ui_down"):
+		last_move_dir = Vector2.DOWN
 		_move(vector_down, "MoveDown")
 
 func _show_miss():

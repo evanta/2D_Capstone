@@ -238,3 +238,6 @@ func _get_anim_name(direction: Vector2) -> String:
 	elif direction == Vector2.DOWN:
 		return "MoveDown"
 	return "idle"
+	
+func take_damage():
+	print("jump enemy takes damage")

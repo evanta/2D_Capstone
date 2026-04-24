@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3qmaxlqk7600"
-path="res://.godot/imported/Screenshot_2026-03-06_at_12.11.42_PM-removebg-preview.png-4721c0342973573f629afb4d7cb04857.ctex"
+uid="uid://7rp6fc7sjc6b"
+path="res://.godot/imported/circle light.png-d38a7d7ed64b8d1365dfae56de016fe8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://weapon/Screenshot_2026-03-06_at_12.11.42_PM-removebg-preview.png"
-dest_files=["res://.godot/imported/Screenshot_2026-03-06_at_12.11.42_PM-removebg-preview.png-4721c0342973573f629afb4d7cb04857.ctex"]
+source_file="res://weapon/circle light.png"
+dest_files=["res://.godot/imported/circle light.png-d38a7d7ed64b8d1365dfae56de016fe8.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cqa6e3iemqoyt"]
 
-[ext_resource type="Script" uid="uid://de0apn2oua1a" path="res://light_spell.gd" id="1_o3ppw"]
-[ext_resource type="Texture2D" uid="uid://7rp6fc7sjc6b" path="res://circle light.png" id="1_vjp86"]
+[ext_resource type="Script" uid="uid://de0apn2oua1a" path="res://weapon/light_spell.gd" id="1_o3ppw"]
+[ext_resource type="Texture2D" uid="uid://7rp6fc7sjc6b" path="res://weapon/circle light.png" id="1_vjp86"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3ppw"]
 radius = 3.0

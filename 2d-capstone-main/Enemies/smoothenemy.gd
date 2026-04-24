@@ -225,3 +225,6 @@ func _on_move_finished():
 	is_moving = false
 	global_position = cell_to_world(world_to_cell(global_position))
 	sprite.play("idle")
+	
+func take_damage():
+	print("smooth enemy takes damage")
