@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://316pu1wh05fd" path="res://Scenes/Conductor.tscn" id="3_8bwi6"]
 [ext_resource type="PackedScene" uid="uid://t51mdadfbyv0" path="res://Enemies/JumpEnemy.tscn" id="5_4cx8u"]
 [ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://healthbar.tscn" id="9_6qqx0"]
+[ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://spellbar.tscn" id="10_x7rns"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4uqp"]
 texture = ExtResource("1_u4uqp")
@@ -4855,3 +4856,9 @@ offset_left = -80.0
 offset_top = -44.0
 offset_right = -16.0
 offset_bottom = -14.0
+
+[node name="TextureProgressBar" parent="Character" unique_id=709735907 instance=ExtResource("10_x7rns")]
+offset_left = -80.0
+offset_top = -35.0
+offset_right = -16.0
+offset_bottom = 5.0

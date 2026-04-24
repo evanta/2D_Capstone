@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cqa6e3iemqoyt"]
+
+[ext_resource type="Script" uid="uid://de0apn2oua1a" path="res://light_spell.gd" id="1_o3ppw"]
+[ext_resource type="Texture2D" uid="uid://7rp6fc7sjc6b" path="res://circle light.png" id="1_vjp86"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3ppw"]
+radius = 3.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1632223384]
+script = ExtResource("1_o3ppw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=120304238]
+scale = Vector2(0.032857098, 0.032857098)
+texture = ExtResource("1_vjp86")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300594829]
+shape = SubResource("CircleShape2D_o3ppw")
