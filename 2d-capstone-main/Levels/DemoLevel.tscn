@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cshe68ow80a1x" path="res://Enemies/SmoothEnemy.tscn" id="2_x24b0"]
 [ext_resource type="PackedScene" uid="uid://316pu1wh05fd" path="res://Scenes/Conductor.tscn" id="3_8bwi6"]
 [ext_resource type="PackedScene" uid="uid://t51mdadfbyv0" path="res://Enemies/JumpEnemy.tscn" id="5_4cx8u"]
-[ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://UI/healthbar.tscn" id="9_6qqx0"]
+[ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://healthbar.tscn" id="9_6qqx0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4uqp"]
 texture = ExtResource("1_u4uqp")
@@ -4833,8 +4833,8 @@ position = Vector2(176, 440)
 cameraZoom = 7.0
 moveSpeed = 2.0
 
-[node name="TextureProgressBar" parent="Character" unique_id=709735907 instance=ExtResource("9_6qqx0")]
+[node name="HealthBar" parent="Character" unique_id=1391395372 instance=ExtResource("9_6qqx0")]
 offset_left = -80.0
-offset_top = -48.0
+offset_top = -44.0
 offset_right = -16.0
-offset_bottom = -8.0
+offset_bottom = -14.0
