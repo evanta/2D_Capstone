@@ -1,13 +1,17 @@
 extends CharacterBody2D
 
+signal healthChanged
+
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var camera_2d: Camera2D = $Camera2D
 
 @export var cameraZoom: float = 1.1
-@export var moveSpeed: float = 2.0
-@export var timeOffBeat: float = 0.15
-@export var playerHealth: float = 100
+@export var moveSpeed: float = 2.0 #how fast does the player move
+@export var timeOffBeat: float = 0.15 #how off beat the player can input movement and the character still move
+@export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
+@export var currentHealth: float = maxHealth #Tracks current healt. 
+@export var offBeatDamage: int = 5
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
 const MISS_SCENE = preload("res://Sprite/MissText.tscn")
@@ -23,8 +27,12 @@ var vector_left: Vector2
 var is_moving := false
 var instance = null
 var in_corrupt_area := false
+var is_invincible = false
+var is_dead = false
+@export var invincible_time = 0.5
 
 func _ready():
+	add_to_group("player")
 	if tile_map == null:
 		push_warning("tile_map not found — running without a TileMap parent")
 		return
@@ -54,10 +62,9 @@ func _input(event):
 	if event.is_echo():
 		return
 	
-	if in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
+	if not is_invincible and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
 		_show_miss()
-		playerHealth -= 5
-		print(playerHealth)
+		take_damage(10)
 		return
 
 	if is_moving:
@@ -87,8 +94,9 @@ func _show_miss():
 	miss.queue_free()
 
 func _move(direction: Vector2, anim_name: String):
-	#if test_move(transform, direction):
-		#return  # blocked by a collision tile
+	var collision = move_and_collide(direction, true)
+	if collision != null and not collision.get_collider().is_in_group("enemy"):
+		return
 	is_moving = true
 	anim.play(anim_name)
 	var tween = create_tween()
@@ -106,3 +114,28 @@ func _on_corrupt_exited(body: Node2D) -> void:
 	if body == self:
 		in_corrupt_area = false
 		print("exited corrupt area")
+		
+# ===== Damage & Health =====
+func take_damage(amount):
+	if is_invincible or is_dead:
+		return
+
+	is_invincible = true
+	start_invincibility()
+
+	currentHealth -= amount
+	healthChanged.emit()
+	print(currentHealth)
+
+	if currentHealth <= 0:
+		is_dead = true
+
+func start_invincibility():
+	if sprite:
+		sprite.modulate = Color(1, 0.5, 0.5)  # Flash red
+
+	await get_tree().create_timer(invincible_time).timeout
+	is_invincible = false
+
+	if sprite:
+		sprite.modulate = Color(1, 1, 1)  # Back to normal

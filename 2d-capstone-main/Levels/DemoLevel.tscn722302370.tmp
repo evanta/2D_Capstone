@@ -4785,7 +4785,7 @@ size = Vector2(190.5, 96)
 
 [node name="DemoLevel" type="Node2D" unique_id=1256109257 node_paths=PackedStringArray("corrupt_areas")]
 script = ExtResource("1_qs7c1")
-corrupt_areas = [NodePath("LEVEL DESIGN/CorruptArea1"), NodePath("LEVEL DESIGN/CorruptArea2"), NodePath("LEVEL DESIGN/CorruptArea3")]
+corrupt_areas = [NodePath("LEVEL DESIGN/CorruptArea1"), NodePath("LEVEL DESIGN/CorruptArea2")]
 
 [node name="LEVEL DESIGN" type="Node2D" parent="." unique_id=334228804]
 
@@ -4806,11 +4806,9 @@ shape = SubResource("ConvexPolygonShape2D_qs7c1")
 
 [node name="SmoothEnemy" parent="LEVEL DESIGN/CorruptArea1" unique_id=1802027578 instance=ExtResource("2_x24b0")]
 position = Vector2(-32, -8)
-speed = 0.5
 
 [node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea1" unique_id=310461742 instance=ExtResource("5_4cx8u")]
 position = Vector2(56, 24)
-speed = 0.5
 
 [node name="CorruptArea2" type="Area2D" parent="LEVEL DESIGN" unique_id=633756565]
 position = Vector2(160, 176)
@@ -4824,34 +4822,19 @@ tile_set = SubResource("TileSet_qs7c1")
 position = Vector2(0.75, 0)
 shape = SubResource("RectangleShape2D_qs7c1")
 
-[node name="SmoothEnemy" parent="LEVEL DESIGN/CorruptArea2" unique_id=1260622339 instance=ExtResource("2_x24b0")]
-position = Vector2(-48, -8)
-
-[node name="CorruptArea3" type="Area2D" parent="LEVEL DESIGN" unique_id=733954006]
-position = Vector2(512, 80)
-script = ExtResource("2_wpb74")
-
-[node name="CorruptMapLayer" type="TileMapLayer" parent="LEVEL DESIGN/CorruptArea3" unique_id=2119900570]
-tile_map_data = PackedByteArray("AAD8/wAAAAAQAFkAAAD9/wAAAAARAFkAAAD+/wAAAAAQAFkAAAD//wAAAAARAFkAAAAAAAAAAAAQAFkAAAABAAAAAAARAFkAAAACAAAAAAAQAFkAAAADAAAAAAARAFkAAAAEAAAAAAAQAFkAAAAFAAAAAAARAFkAAAD8////AAAQAFkAAAD9////AAARAFkAAAD+////AAAQAFkAAAD/////AAARAFkAAAAAAP//AAAQAFkAAAABAP//AAARAFkAAAACAP//AAAQAFkAAAADAP//AAARAFkAAAAEAP//AAAQAFkAAAAFAP//AAARAFkAAAD6////AAAQAFkAAAD7////AAARAFkAAAD6/wAAAAAQAFkAAAD7/wAAAAARAFkAAAD6//7/AAAQAFkAAAD7//7/AAARAFkAAAD8//7/AAAQAFkAAAD9//7/AAARAFkAAAD+//7/AAAQAFkAAAD///7/AAARAFkAAAAAAP7/AAAQAFkAAAABAP7/AAARAFkAAAACAP7/AAAQAFkAAAADAP7/AAARAFkAAAAEAP7/AAAQAFkAAAAFAP7/AAARAFkAAAAEAAEAAAAQAFkAAAAFAAEAAAARAFkAAAACAAEAAAAQAFkAAAADAAEAAAARAFkAAAAAAAEAAAAQAFkAAAABAAEAAAARAFkAAAD+/wEAAAAQAFkAAAD//wEAAAARAFkAAAD8/wEAAAAQAFkAAAD9/wEAAAARAFkAAAD6/wEAAAAQAFkAAAD7/wEAAAARAFkAAAD6/wIAAAAQAFkAAAD7/wIAAAARAFkAAAD8/wIAAAAQAFkAAAD9/wIAAAARAFkAAAD+/wIAAAAQAFkAAAD//wIAAAARAFkAAAAAAAIAAAAQAFkAAAABAAIAAAARAFkAAAACAAIAAAAQAFkAAAADAAIAAAARAFkAAAAEAAIAAAAQAFkAAAAEAP3/AAAQAFkAAAACAP3/AAAQAFkAAAADAP3/AAARAFkAAAAAAP3/AAAQAFkAAAABAP3/AAARAFkAAAD+//3/AAAQAFkAAAD///3/AAARAFkAAAD8//3/AAAQAFkAAAD9//3/AAARAFkAAAD6//3/AAAQAFkAAAD7//3/AAARAFkAAAAFAAIAAAARAFsAAAAFAP3/AAARAFsAAAA=")
-tile_set = SubResource("TileSet_qs7c1")
-
-[node name="BeatCollisionShape2D" type="CollisionShape2D" parent="LEVEL DESIGN/CorruptArea3" unique_id=1180068865]
-position = Vector2(0.75, 0)
-shape = SubResource("RectangleShape2D_qs7c1")
-
-[node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea3" unique_id=2134889552 instance=ExtResource("5_4cx8u")]
-position = Vector2(16, 16)
+[node name="SmoothEnemy" parent="LEVEL DESIGN/CorruptArea2" unique_id=558624650 instance=ExtResource("2_x24b0")]
+position = Vector2(-32, -8)
 
 [node name="Conductor" parent="." unique_id=1174756302 instance=ExtResource("3_8bwi6")]
 measures = 125
 
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("2_u4uqp")]
-position = Vector2(368, 72)
+position = Vector2(328, 344)
 cameraZoom = 7.0
 moveSpeed = 2.0
 
 [node name="HealthBar" parent="Character" unique_id=1391395372 instance=ExtResource("9_6qqx0")]
-offset_left = -80.0
-offset_top = -44.0
-offset_right = -16.0
-offset_bottom = -14.0
+offset_left = -36.0
+offset_top = -39.0
+offset_right = -9.0
+offset_bottom = -12.0
