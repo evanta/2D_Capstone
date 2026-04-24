@@ -13,12 +13,6 @@ var tile_size: Vector2
 var is_moving := false
 var can_damage := true
 var attack_cooldown_beats := 0
-var move_cooldown_beats := 0
-
-@export var hit_move_delay := 2
-@export var chase_radius := 1
-
-var damage := 10
 
 @export var damage: float = 10 #damage that the enemy does to the player
 
@@ -53,24 +47,22 @@ func _snap_to_grid():
 
 
 # ========================
-# RULES
+# CORRUPTION RULE
 # ========================
 func is_corrupt(cell: Vector2) -> bool:
 	var world_pos = cell_to_world(cell)
 	var map_pos = corrupt_map.local_to_map(corrupt_map.to_local(world_pos))
 	return corrupt_map.get_cell_source_id(map_pos) != -1
 
+
+# ========================
+# OCCUPANCY
+# ========================
 func is_cell_occupied(cell: Vector2) -> bool:
 	for e in get_tree().get_nodes_in_group("enemy"):
 		if e != self and world_to_cell(e.global_position) == cell:
 			return true
 	return false
-
-# 🔥 UPDATED
-func in_chase_range(enemy_cell: Vector2, player_cell: Vector2) -> bool:
-	var diff = player_cell - enemy_cell
-	var dist = max(abs(diff.x), abs(diff.y))
-	return dist <= chase_radius
 
 
 # ========================
@@ -80,21 +72,16 @@ func _on_beat(_beat_index):
 	if attack_cooldown_beats > 0:
 		attack_cooldown_beats -= 1
 
-	if move_cooldown_beats > 0:
-		move_cooldown_beats -= 1
-		return
-
 	if is_moving or player == null:
 		return
 
 	var enemy_cell = world_to_cell(global_position)
 	var player_cell = world_to_cell(player.global_position)
 
-	if not is_corrupt(enemy_cell) or not is_corrupt(player_cell):
+	if not is_corrupt(enemy_cell):
 		return
 
-	if not in_chase_range(enemy_cell, player_cell):
-		sprite.play("idle")
+	if not is_corrupt(player_cell):
 		return
 
 	var diff = player_cell - enemy_cell
@@ -102,7 +89,6 @@ func _on_beat(_beat_index):
 
 	if abs(diff.x) > abs(diff.y):
 		direction = Vector2(sign(diff.x), 0)
-		sprite.flip_h = diff.x < 0
 	elif diff.y != 0:
 		direction = Vector2(0, sign(diff.y))
 
@@ -113,7 +99,7 @@ func _on_beat(_beat_index):
 
 
 # ========================
-# MOVE
+# MOVE (JUMP)
 # ========================
 func _move(direction: Vector2):
 	is_moving = true
@@ -126,7 +112,11 @@ func _move(direction: Vector2):
 	else:
 		target_cell += Vector2(0, sign(direction.y))
 
-	if not is_corrupt(target_cell) or is_cell_occupied(target_cell):
+	if not is_corrupt(target_cell):
+		is_moving = false
+		return
+
+	if is_cell_occupied(target_cell):
 		is_moving = false
 		return
 
@@ -154,8 +144,10 @@ func _move(direction: Vector2):
 # ========================
 func _jump_arc(t: float, start: Vector2, target: Vector2):
 	var pos = start.lerp(target, t)
+
 	var height = -tile_size.y * 0.35
 	var arc = 4 * height * (t - t * t)
+
 	global_position = pos + Vector2(0, arc)
 
 
@@ -171,12 +163,7 @@ func _check_damage(target_cell: Vector2):
 
 	if world_to_cell(player.global_position) == target_cell:
 		player.take_damage(damage)
-
-		var knock_dir = (player.global_position - global_position).normalized()
-		_knockback(knock_dir)
-
-		attack_cooldown_beats = 1
-		move_cooldown_beats = hit_move_delay
+		attack_cooldown_beats = 2
 		_start_damage_cooldown()
 
 
@@ -204,7 +191,6 @@ func _knockback(direction: Vector2):
 	tween.finished.connect(func():
 		is_moving = false
 		global_position = target_pos
-		sprite.play("idle")
 	)
 
 
