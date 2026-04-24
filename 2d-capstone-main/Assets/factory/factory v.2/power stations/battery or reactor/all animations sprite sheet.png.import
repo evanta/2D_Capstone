@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3trh86gtka8a"
-path="res://.godot/imported/all animations sprite sheet.png-4b5690184884c861df0a6b408500cff3.ctex"
+path="res://.godot/imported/all animations sprite sheet.png-ab2bf70bd4301e7a577142c3197d377c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://factory v.2/power stations/battery or reactor/all animations sprite sheet.png"
-dest_files=["res://.godot/imported/all animations sprite sheet.png-4b5690184884c861df0a6b408500cff3.ctex"]
+source_file="res://Assets/factory/factory v.2/power stations/battery or reactor/all animations sprite sheet.png"
+dest_files=["res://.godot/imported/all animations sprite sheet.png-ab2bf70bd4301e7a577142c3197d377c.ctex"]
 
 [params]
 

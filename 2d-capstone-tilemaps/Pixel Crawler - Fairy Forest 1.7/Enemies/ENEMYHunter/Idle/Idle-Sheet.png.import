@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpydouaxyyy4y"
-path="res://.godot/imported/Death-Sheet.png-f69a90588e8e0779e9baac653e32b960.ctex"
+uid="uid://xtpy2x2g0ir1"
+path="res://.godot/imported/Idle-Sheet.png-ec884881d27d6a50ae4b8640bdbdf617.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pixel Crawler - Fairy Forest 1.7/Enemies/Elf - Hunter/Death/Death-Sheet.png"
-dest_files=["res://.godot/imported/Death-Sheet.png-f69a90588e8e0779e9baac653e32b960.ctex"]
+source_file="res://Pixel Crawler - Fairy Forest 1.7/Enemies/ENEMYHunter/Idle/Idle-Sheet.png"
+dest_files=["res://.godot/imported/Idle-Sheet.png-ec884881d27d6a50ae4b8640bdbdf617.ctex"]
 
 [params]
 

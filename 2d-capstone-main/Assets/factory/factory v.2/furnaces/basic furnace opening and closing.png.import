@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0k6rxfmxgb2w"
-path="res://.godot/imported/basic furnace opening and closing.png-58b31dda5734b92c0a1850f1ca4c3bd1.ctex"
+path="res://.godot/imported/basic furnace opening and closing.png-37264633b42b609914cb426d626f2d4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://factory v.2/furnaces/basic furnace opening and closing.png"
-dest_files=["res://.godot/imported/basic furnace opening and closing.png-58b31dda5734b92c0a1850f1ca4c3bd1.ctex"]
+source_file="res://Assets/factory/factory v.2/furnaces/basic furnace opening and closing.png"
+dest_files=["res://.godot/imported/basic furnace opening and closing.png-37264633b42b609914cb426d626f2d4c.ctex"]
 
 [params]
 

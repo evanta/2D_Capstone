@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvos0t0udssxa"
-path="res://.godot/imported/openning animation sheet.png-af0fa15abcccbc6d9b1a166cc326f478.ctex"
+path="res://.godot/imported/openning animation sheet.png-9b4ddbcadc633a0b5f431229f9b03d98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://factory v.2/power stations/battery or reactor/openning animation sheet.png"
-dest_files=["res://.godot/imported/openning animation sheet.png-af0fa15abcccbc6d9b1a166cc326f478.ctex"]
+source_file="res://Assets/factory/factory v.2/power stations/battery or reactor/openning animation sheet.png"
+dest_files=["res://.godot/imported/openning animation sheet.png-9b4ddbcadc633a0b5f431229f9b03d98.ctex"]
 
 [params]
 

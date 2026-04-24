@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4ololdjwlk7w"
-path="res://.godot/imported/Run-Sheet.png-c2b03ef85a0936b262341a5a4b3bf8d2.ctex"
+path="res://.godot/imported/Run-Sheet.png-b10dd67be0bd5e8153fe2be18c9987bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pixel Crawler - Fairy Forest 1.7/Enemies/Elf - Hunter/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-c2b03ef85a0936b262341a5a4b3bf8d2.ctex"]
+source_file="res://Pixel Crawler - Fairy Forest 1.7/Enemies/ENEMYHunter/Run/Run-Sheet.png"
+dest_files=["res://.godot/imported/Run-Sheet.png-b10dd67be0bd5e8153fe2be18c9987bb.ctex"]
 
 [params]
 

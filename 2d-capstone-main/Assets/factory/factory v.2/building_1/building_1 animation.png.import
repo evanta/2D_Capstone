@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blelfwi87xqkx"
-path="res://.godot/imported/building_1 animation.png-73b8aea1070ab71332506c43e29e4a90.ctex"
+path="res://.godot/imported/building_1 animation.png-55270da2f2ed76e671d1c0ad8dcbbf81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://factory v.2/building_1/building_1 animation.png"
-dest_files=["res://.godot/imported/building_1 animation.png-73b8aea1070ab71332506c43e29e4a90.ctex"]
+source_file="res://Assets/factory/factory v.2/building_1/building_1 animation.png"
+dest_files=["res://.godot/imported/building_1 animation.png-55270da2f2ed76e671d1c0ad8dcbbf81.ctex"]
 
 [params]
 

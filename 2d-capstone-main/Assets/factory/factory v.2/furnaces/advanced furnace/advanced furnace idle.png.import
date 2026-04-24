@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c17bpvpyqhdgf"
-path="res://.godot/imported/advanced furnace idle.png-75e176fd7e8ed47deeabf2a6233967e3.ctex"
+path="res://.godot/imported/advanced furnace idle.png-d63af265a56ef12a5d078ddd8bd7d5f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://factory v.2/furnaces/advanced furnace/advanced furnace idle.png"
-dest_files=["res://.godot/imported/advanced furnace idle.png-75e176fd7e8ed47deeabf2a6233967e3.ctex"]
+source_file="res://Assets/factory/factory v.2/furnaces/advanced furnace/advanced furnace idle.png"
+dest_files=["res://.godot/imported/advanced furnace idle.png-d63af265a56ef12a5d078ddd8bd7d5f7.ctex"]
 
 [params]
 

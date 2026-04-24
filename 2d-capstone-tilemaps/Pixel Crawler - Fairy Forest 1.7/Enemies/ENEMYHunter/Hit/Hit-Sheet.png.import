@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqygu4pm8jr1a"
-path="res://.godot/imported/closing animation sheet.png-470ff1234a7b18d2c02619e1b41cbaa5.ctex"
+uid="uid://c7pgdan8bcdu2"
+path="res://.godot/imported/Hit-Sheet.png-b203929b396f979db237726a8109bf1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/factory/factory v.2/power stations/battery or reactor/closing animation sheet.png"
-dest_files=["res://.godot/imported/closing animation sheet.png-470ff1234a7b18d2c02619e1b41cbaa5.ctex"]
+source_file="res://Pixel Crawler - Fairy Forest 1.7/Enemies/ENEMYHunter/Hit/Hit-Sheet.png"
+dest_files=["res://.godot/imported/Hit-Sheet.png-b203929b396f979db237726a8109bf1b.ctex"]
 
 [params]
 
