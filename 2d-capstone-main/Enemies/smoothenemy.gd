@@ -13,13 +13,11 @@ var tile_size: Vector2
 var is_moving := false
 var can_damage := true
 var attack_cooldown_beats := 0
-var move_cooldown_beats := 0
 
-@export var hit_move_delay := 2
-@export var chase_radius := 1
+@export var damage: float = 10 #damage that the enemy does to the player
 
-var damage := 10
-
+@export var speed: float = 1 #how fast does the enemy move twords and attack the player
+#smaller number means slower
 
 # ========================
 # SETUP
@@ -126,13 +124,21 @@ func _move(direction: Vector2):
 		is_moving = false
 		return
 
+	anim.play(_get_anim_name(direction))
+
+	if player != null and world_to_cell(player.global_position) == target_cell:
+		_check_damage(target_cell)
+		var start_pos = cell_to_world(start_cell)
+		var lunge_pos = start_pos.lerp(cell_to_world(target_cell), 0.4)
+		var tween = create_tween()
+		tween.tween_property(self, "global_position", lunge_pos, conductor.sec_per_beat / speed * 0.3)
+		tween.tween_property(self, "global_position", start_pos, conductor.sec_per_beat / speed * 0.3)
+		tween.finished.connect(_on_move_finished)
+		return
+
 	var target_pos = cell_to_world(target_cell)
-
-	_check_damage(target_cell)
-
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", target_pos, conductor.sec_per_beat)
-
+	tween.tween_property(self, "global_position", target_pos, conductor.sec_per_beat / speed)
 	tween.finished.connect(_on_move_finished)
 
 
@@ -148,12 +154,7 @@ func _check_damage(target_cell: Vector2):
 
 	if world_to_cell(player.global_position) == target_cell:
 		player.take_damage(damage)
-
-		var knock_dir = (player.global_position - global_position).normalized()
-		_knockback(knock_dir)
-
-		attack_cooldown_beats = 1
-		move_cooldown_beats = hit_move_delay
+		attack_cooldown_beats = 2
 		_start_damage_cooldown()
 
 
@@ -175,7 +176,7 @@ func _knockback(direction: Vector2):
 	var target_pos = cell_to_world(target_cell)
 
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", target_pos, conductor.sec_per_beat * 0.35)
+	tween.tween_property(self, "global_position", target_pos, conductor.sec_per_beat / speed * 0.35)
 
 	tween.finished.connect(func():
 		is_moving = false
@@ -205,6 +206,20 @@ func _find_knockback_cell(start_cell: Vector2, direction: Vector2) -> Vector2:
 			return c
 
 	return start_cell
+
+
+func _get_anim_name(direction: Vector2) -> String:
+	if direction == Vector2.RIGHT:
+		sprite.flip_h = false
+		return "MoveRight"
+	elif direction == Vector2.LEFT:
+		sprite.flip_h = true
+		return "MoveLeft"
+	elif direction == Vector2.UP:
+		return "MoveUp"
+	elif direction == Vector2.DOWN:
+		return "MoveDown"
+	return "idle"
 
 
 # ========================

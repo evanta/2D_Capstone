@@ -7,10 +7,11 @@ signal healthChanged
 @onready var camera_2d: Camera2D = $Camera2D
 
 @export var cameraZoom: float = 1.1
-@export var moveSpeed: float = 2.0
-@export var timeOffBeat: float = 0.15
-@export var maxHealth: float = 100
-@export var currentHealth: float = maxHealth
+@export var moveSpeed: float = 2.0 #how fast does the player move
+@export var timeOffBeat: float = 0.15 #how off beat the player can input movement and the character still move
+@export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
+@export var currentHealth: float = maxHealth #Tracks current healt. 
+@export var offBeatDamage: int = 5
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
 const MISS_SCENE = preload("res://Sprite/MissText.tscn")
@@ -39,6 +40,7 @@ var miss_cooldown := false
 # SETUP
 # ========================
 func _ready():
+	add_to_group("player")
 	if tile_map == null:
 		push_warning("tile_map not found")
 		return
@@ -77,13 +79,10 @@ func _input(event):
 
 	if event.is_echo():
 		return
-
-	# ===== OFF-BEAT CHECK (FIXED) =====
-	if in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
-		if not miss_cooldown:
-			_show_miss()
-			take_damage(1)
-			miss_cooldown = true
+	
+	if not is_invincible and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() > timeOffBeat:
+		_show_miss()
+		take_damage(10)
 		return
 
 	if is_moving:
@@ -112,7 +111,8 @@ func _on_beat(_beat_index):
 # MOVE
 # ========================
 func _move(direction: Vector2, anim_name: String):
-	if test_move(transform, direction):
+	var collision = move_and_collide(direction, true)
+	if collision != null and not collision.get_collider().is_in_group("enemy"):
 		return
 
 	is_moving = true
