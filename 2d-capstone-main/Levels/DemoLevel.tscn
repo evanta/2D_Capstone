@@ -4850,6 +4850,7 @@ measures = 125
 position = Vector2(368, 72)
 cameraZoom = 7.0
 moveSpeed = 2.0
+wandDamage = 20
 
 [node name="HealthBar" parent="Character" unique_id=1391395372 instance=ExtResource("9_6qqx0")]
 offset_left = -80.0

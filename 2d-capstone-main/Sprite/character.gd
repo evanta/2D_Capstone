@@ -12,8 +12,10 @@ signal stepped
 @export var timeOffBeat: float = 0.15 #how off beat the player can input movement and the character still move
 @export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
 @export var currentHealth: float = maxHealth #Tracks current healt. 
-@export var offBeatDamage: int = 5
+@export var offBeatDamage: int = 5 #how much damage does the character take when they move off beat
+@export var wandDamage: int = 10 #how much damage does the wand do when it hits an enemy
 @export var spellSteps: int = 0
+
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
 const MISS_SCENE = preload("res://Sprite/MissText.tscn")
@@ -71,7 +73,7 @@ func _physics_process(delta):
 		wand.position = Vector2(1, 1)
 		wand.rotation = last_move_dir.angle()
 		if Input.is_action_just_pressed("Fire") and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() <= timeOffBeat:
-			wand.shoot()
+			wand.shoot(wandDamage)
 
 func _input(event):
 	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):

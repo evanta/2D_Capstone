@@ -3,9 +3,9 @@ extends Node2D
 var owner_body: CharacterBody2D  # player reference
 @export var SpellScene = preload("res://weapon/light_spell.tscn")
 
-func shoot():
+func shoot(damage):
 	var spell = SpellScene.instantiate()
-	
+	spell.damage = damage
 	var direction = get_parent().last_move_dir
 	
 	spell.global_position = $Muzzle.global_position

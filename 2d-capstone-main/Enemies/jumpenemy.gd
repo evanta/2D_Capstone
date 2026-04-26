@@ -239,5 +239,5 @@ func _get_anim_name(direction: Vector2) -> String:
 		return "MoveDown"
 	return "idle"
 	
-func take_damage():
-	print("jump enemy takes damage")
+func take_damage(damage):
+	print("jump enemy takes", damage, "damage")
