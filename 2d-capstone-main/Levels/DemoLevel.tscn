@@ -4847,10 +4847,10 @@ position = Vector2(16, 16)
 measures = 125
 
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("2_u4uqp")]
-position = Vector2(368, 72)
-cameraZoom = 7.0
+position = Vector2(328, 288)
+cameraZoom = 4.0
 moveSpeed = 2.0
-wandDamage = 20
+timeOffBeat = 1.0
 
 [node name="HealthBar" parent="Character" unique_id=1391395372 instance=ExtResource("9_6qqx0")]
 offset_left = -80.0

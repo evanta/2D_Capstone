@@ -111,9 +111,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bd8i4")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 4.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -288,7 +288,8 @@ texture_filter = 1
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_0bdai")
 animation = &"death"
-frame_progress = 0.43306062
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=97896159]
 position = Vector2(0, 0.125)

@@ -2,6 +2,31 @@
 
 [ext_resource type="Script" uid="uid://d5p3bq76soey" path="res://Enemies/jumpenemy.gd" id="1_6m775"]
 [ext_resource type="Texture2D" uid="uid://dcrqftycuqnyt" path="res://Assets/Pixel Crawler - Fairy Forest 1.7/Enemies/Elf - Base/Idle/Idle-Sheet.png" id="2_gqit3"]
+[ext_resource type="Texture2D" uid="uid://irstssa65ntd" path="res://Assets/Pixel Crawler - Fairy Forest 1.7/Enemies/Elf - Base/Death/Death-Sheet.png" id="2_vt21f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sse65"]
+atlas = ExtResource("2_vt21f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f78f0"]
+atlas = ExtResource("2_vt21f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0qlw"]
+atlas = ExtResource("2_vt21f")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipcok"]
+atlas = ExtResource("2_vt21f")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2su4e"]
+atlas = ExtResource("2_vt21f")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p8spu"]
+atlas = ExtResource("2_vt21f")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7bn3"]
 atlas = ExtResource("2_gqit3")
@@ -21,6 +46,29 @@ region = Rect2(192, 32, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0bdai"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sse65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f78f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0qlw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipcok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2su4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p8spu")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s7bn3")
@@ -143,7 +191,9 @@ texture_filter = 1
 position = Vector2(0, -5)
 scale = Vector2(0.46875, 0.46875)
 sprite_frames = SubResource("SpriteFrames_0bdai")
-animation = &"idle"
+animation = &"death"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=97896159]
 position = Vector2(0, 0.125)

@@ -11,10 +11,12 @@ signal stepped
 @export var moveSpeed: float = 2.0 #how fast does the player move
 @export var timeOffBeat: float = 0.15 #how off beat the player can input movement and the character still move
 @export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
-@export var currentHealth: float = maxHealth #Tracks current healt. 
 @export var offBeatDamage: int = 5 #how much damage does the character take when they move off beat
-@export var wandDamage: int = 10 #how much damage does the wand do when it hits an enemy
+@export var wandDamage: int = 35 #how much damage does the wand do when it hits an enemy
+@export var wandManaUse: int = 2 #how much magic the wand uses when fireing. 
 @export var spellSteps: int = 0
+@export var currentHealth: float = maxHealth #Tracks current healt. 
+
 
 
 @onready var tile_map: TileMapLayer = get_parent().get_node("LEVEL DESIGN/GroundTileMap")
@@ -72,10 +74,15 @@ func _physics_process(delta):
 	if wand:
 		wand.position = Vector2(1, 1)
 		wand.rotation = last_move_dir.angle()
-		if Input.is_action_just_pressed("Fire") and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() <= timeOffBeat:
+		if Input.is_action_just_pressed("Fire") and (spellSteps - wandManaUse) >= 0 and in_corrupt_area and conductor != null and conductor.playing and conductor.seconds_to_beat() <= timeOffBeat:
 			wand.shoot(wandDamage)
+			spellSteps -= wandManaUse
+			stepped.emit()
 
 func _input(event):
+	if is_dead == true:
+		return
+	
 	if not (event.is_action_pressed("ui_right") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
 		return
 		
@@ -86,10 +93,7 @@ func _input(event):
 		_show_miss()
 		take_damage(offBeatDamage)
 		return
-		
-	#if Input.is_action_just_pressed("Fire"):
-		#wand.shoot()
-
+	
 	if is_moving:
 		return
 	if event.is_action_pressed("ui_right"):
@@ -159,6 +163,7 @@ func take_damage(amount):
 
 	if currentHealth <= 0:
 		is_dead = true
+		die()
 
 func start_invincibility():
 	if sprite:
@@ -169,3 +174,8 @@ func start_invincibility():
 
 	if sprite:
 		sprite.modulate = Color(1, 1, 1)  # Back to normal
+		
+func die():
+	sprite.play("death")
+	await sprite.animation_finished
+	get_tree().reload_current_scene()

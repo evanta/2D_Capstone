@@ -12,10 +12,11 @@ var tile_size: Vector2
 
 var is_moving := false
 var can_damage := true
+var is_dead := false
 var attack_cooldown_beats := 0
 
 @export var damage: float = 10 #damage that the enemy does to the player
-
+@export var health: float = 100 #how much health the enemy has. 
 @export var speed: float = 1 #how fast does the enemy move twords and attack the player
 #smaller number means slower
 
@@ -103,6 +104,9 @@ func _on_beat(_beat_index):
 # MOVE
 # ========================
 func _move(direction: Vector2):
+	if is_dead == true:
+		return
+	
 	is_moving = true
 
 	var start_cell = world_to_cell(global_position)
@@ -224,7 +228,20 @@ func _get_anim_name(direction: Vector2) -> String:
 func _on_move_finished():
 	is_moving = false
 	global_position = cell_to_world(world_to_cell(global_position))
-	sprite.play("idle")
+	if not is_dead:
+		sprite.play("idle")
 	
 func take_damage(damage):
-	print("jump enemy takes", damage, "damage")
+	if is_dead:
+		return
+	print("smooth enemy takes ", damage, " damage")
+	health -= damage
+	print("smooth enemy health: ", health)
+	if health <= 0:
+		die()
+	
+func die():
+	is_dead = true
+	sprite.play("death")
+	await sprite.animation_finished
+	queue_free()
