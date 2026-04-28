@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://0n1tkx2v6c1l"]
+
+[ext_resource type="Script" uid="uid://crv5v2kdy8r3s" path="res://visualizer.gd" id="1_ex5g4"]
+[ext_resource type="Texture2D" uid="uid://cdmuo2ayc0fok" path="res://pixel_visualizer-removebg-preview.png" id="1_o4in6"]
+[ext_resource type="PackedScene" uid="uid://316pu1wh05fd" path="res://Scenes/Conductor.tscn" id="3_rlvcg"]
+
+[node name="Control" type="Control" unique_id=1688392568]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+script = ExtResource("1_ex5g4")
+
+[node name="CenterCircle" type="Sprite2D" parent="." unique_id=2010565214]
+position = Vector2(30, 0.5)
+scale = Vector2(0.154, 0.154)
+texture = ExtResource("1_o4in6")
+
+[node name="LeftSpawn" type="Marker2D" parent="." unique_id=66777160]
+position = Vector2(-554, -1)
+
+[node name="RightSpawn" type="Marker2D" parent="." unique_id=144240183]
+position = Vector2(596, 0)
+
+[node name="Conductor" parent="." unique_id=1174756302 instance=ExtResource("3_rlvcg")]
