@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://healthbar.tscn" id="10_a1tjg"]
 [ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://spellbar.tscn" id="11_s633v"]
 [ext_resource type="Texture2D" uid="uid://k6y1jdogmgv2" path="res://Assets/Pixel Crawler - Fairy Forest 1.7/Assets/UPDATEDTilesmodified.png" id="11_w3g2m"]
-[ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://visualizer.tscn" id="18_gysxx"]
+[ext_resource type="PackedScene" path="res://visualizer.tscn" id="18_gysxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4lyw"]
 texture = ExtResource("3_0fu1u")
