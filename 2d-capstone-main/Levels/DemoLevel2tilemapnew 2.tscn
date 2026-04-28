@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cygt43i8hmdgo"]
+[gd_scene format=4 uid="uid://dqkronqtdwvaj"]
 
 [ext_resource type="Script" uid="uid://coym3uv5y8g7c" path="res://Levels/demo_level.gd" id="1_6cn2i"]
 [ext_resource type="Texture2D" uid="uid://ccavsvncdm8m7" path="res://Assets/Pixel Crawler - Fairy Forest 1.7/Environment (OG pixel crawler pack)/Tilesets/Wall_Variations.png" id="2_hh0e2"]

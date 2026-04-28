@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cesiblbkfqb07"
-path="res://.godot/imported/Run-Sheet.png-b1f6f24488bb659ba5c6e7b568ebd427.ctex"
+uid="uid://k6y1jdogmgv2"
+path="res://.godot/imported/UPDATEDTilesmodified.png-a0a26682d229d69e15be0adb50b20b33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Wizard-character copy/Run/Run-Sheet.png"
-dest_files=["res://.godot/imported/Run-Sheet.png-b1f6f24488bb659ba5c6e7b568ebd427.ctex"]
+source_file="res://Assets/Pixel Crawler - Fairy Forest 1.7/Assets/UPDATEDTilesmodified.png"
+dest_files=["res://.godot/imported/UPDATEDTilesmodified.png-a0a26682d229d69e15be0adb50b20b33.ctex"]
 
 [params]
 
