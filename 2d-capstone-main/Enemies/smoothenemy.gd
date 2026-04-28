@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal healthChanged
+
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var conductor = get_parent().get_parent().get_parent().get_node("Conductor")
@@ -16,7 +18,8 @@ var is_dead := false
 var attack_cooldown_beats := 0
 
 @export var damage: float = 10 #damage that the enemy does to the player
-@export var health: float = 100 #how much health the enemy has. 
+@export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
+@export var currentHealth: float = maxHealth #Tracks current healt. 
 @export var speed: float = 1 #how fast does the enemy move twords and attack the player
 #smaller number means slower
 
@@ -235,9 +238,10 @@ func take_damage(damage):
 	if is_dead:
 		return
 	print("smooth enemy takes ", damage, " damage")
-	health -= damage
-	print("smooth enemy health: ", health)
-	if health <= 0:
+	currentHealth -= damage
+	healthChanged.emit()
+	print("smooth enemy health: ", currentHealth)
+	if currentHealth <= 0:
 		die()
 	
 func die():

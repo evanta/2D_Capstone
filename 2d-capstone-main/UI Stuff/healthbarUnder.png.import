@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkymgm6x3401j"
-path="res://.godot/imported/spellbarProgress.png-4c9f5382f63314452a8784a03f03f627.ctex"
+uid="uid://dohlj2b0pe36y"
+path="res://.godot/imported/healthbarUnder.png-ed346703390530e24e6d056129e3cecd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spellbarProgress.png"
-dest_files=["res://.godot/imported/spellbarProgress.png-4c9f5382f63314452a8784a03f03f627.ctex"]
+source_file="res://UI Stuff/healthbarUnder.png"
+dest_files=["res://.godot/imported/healthbarUnder.png-ed346703390530e24e6d056129e3cecd.ctex"]
 
 [params]
 

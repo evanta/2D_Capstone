@@ -8,7 +8,7 @@ extends Control
 @onready var center_circle = $CenterCircle
 @onready var music = $Conductor
 
-var beat_bar_scene = preload("res://BeatBar.tscn")
+var beat_bar_scene = preload("res://UI Stuff/BeatBar.tscn")
 
 var beat_interval: float
 var beat_timer: float = 0.0
