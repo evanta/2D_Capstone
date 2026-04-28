@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cabi1557jrumk"]
+
+[ext_resource type="Texture2D" uid="uid://cjq8ruytf217t" path="res://neon.png" id="1_tqm7w"]
+[ext_resource type="Script" uid="uid://c14gaga1ae354" path="res://BeatBar.gd" id="2_soie0"]
+
+[node name="BeatBar" type="Sprite2D" unique_id=1766834769]
+position = Vector2(-2, -4)
+scale = Vector2(1.8476561, 1.8476561)
+texture = ExtResource("1_tqm7w")
+script = ExtResource("2_soie0")

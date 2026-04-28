@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal healthChanged
 signal stepped
+signal corruption_changed(is_in: bool)
 
 @onready var anim = $AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
@@ -142,11 +143,13 @@ func _move(direction: Vector2, anim_name: String):
 func _on_corrupt_entered(body: Node2D) -> void:
 	if body == self:
 		in_corrupt_area = true
+		corruption_changed.emit(true)
 		print("entered corrupt area")
 
 func _on_corrupt_exited(body: Node2D) -> void:
 	if body == self:
 		in_corrupt_area = false
+		corruption_changed.emit(false)
 		print("exited corrupt area")
 		
 # ===== Damage & Health =====
