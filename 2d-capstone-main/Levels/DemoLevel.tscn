@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cshe68ow80a1x" path="res://Enemies/SmoothEnemy.tscn" id="2_x24b0"]
 [ext_resource type="PackedScene" uid="uid://316pu1wh05fd" path="res://Scenes/Conductor.tscn" id="3_8bwi6"]
 [ext_resource type="PackedScene" uid="uid://t51mdadfbyv0" path="res://Enemies/JumpEnemy.tscn" id="5_4cx8u"]
-[ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://healthbar.tscn" id="9_6qqx0"]
-[ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://spellbar.tscn" id="10_x7rns"]
-[ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://visualizer.tscn" id="11_5kr3k"]
+[ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://UI Stuff/healthbar.tscn" id="9_6qqx0"]
+[ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://UI Stuff/spellbar.tscn" id="10_x7rns"]
+[ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://UI Stuff/visualizer.tscn" id="11_5kr3k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4uqp"]
 texture = ExtResource("1_u4uqp")

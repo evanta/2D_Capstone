@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjq8ruytf217t"
-path="res://.godot/imported/neon.png-4fbfe24ef4c37b270f3df15f9245be0f.ctex"
+uid="uid://dkymgm6x3401j"
+path="res://.godot/imported/spellbarProgress.png-1125cf06c79c75dc98cbebf63d437ab3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://neon.png"
-dest_files=["res://.godot/imported/neon.png-4fbfe24ef4c37b270f3df15f9245be0f.ctex"]
+source_file="res://UI Stuff/spellbarProgress.png"
+dest_files=["res://.godot/imported/spellbarProgress.png-1125cf06c79c75dc98cbebf63d437ab3.ctex"]
 
 [params]
 

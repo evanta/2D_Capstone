@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0n1tkx2v6c1l"]
 
-[ext_resource type="Script" uid="uid://crv5v2kdy8r3s" path="res://visualizer.gd" id="1_ex5g4"]
-[ext_resource type="Texture2D" uid="uid://cdmuo2ayc0fok" path="res://pixel_visualizer-removebg-preview.png" id="1_o4in6"]
+[ext_resource type="Script" uid="uid://crv5v2kdy8r3s" path="res://UI Stuff/visualizer.gd" id="1_ex5g4"]
+[ext_resource type="Texture2D" uid="uid://cdmuo2ayc0fok" path="res://UI Stuff/pixel_visualizer-removebg-preview.png" id="1_o4in6"]
 [ext_resource type="PackedScene" uid="uid://316pu1wh05fd" path="res://Scenes/Conductor.tscn" id="3_rlvcg"]
 
 [node name="Control" type="Control" unique_id=1688392568]
