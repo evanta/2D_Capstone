@@ -15,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://t51mdadfbyv0" path="res://Enemies/JumpEnemy.tscn" id="8_gysxx"]
 [ext_resource type="PackedScene" uid="uid://d1aeol57iifk5" path="res://Sprite/Character.tscn" id="9_5llb1"]
 [ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://healthbar.tscn" id="10_a1tjg"]
-[ext_resource type="PackedScene" path="res://spellbar.tscn" id="11_s633v"]
+[ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://spellbar.tscn" id="11_s633v"]
 [ext_resource type="Texture2D" uid="uid://k6y1jdogmgv2" path="res://Assets/Pixel Crawler - Fairy Forest 1.7/Assets/UPDATEDTilesmodified.png" id="11_w3g2m"]
+[ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://visualizer.tscn" id="18_gysxx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4lyw"]
 texture = ExtResource("3_0fu1u")
@@ -90165,6 +90166,7 @@ speed = 0.5
 
 [node name="JumpEnemy2" parent="LEVEL DESIGN/CorruptArea1" unique_id=668086770 instance=ExtResource("8_gysxx")]
 position = Vector2(-56, 16)
+speed = 0.3
 
 [node name="CorruptArea2" type="Area2D" parent="LEVEL DESIGN" unique_id=633756565]
 position = Vector2(154.95781, 103.107056)
@@ -90277,3 +90279,15 @@ offset_left = -80.0
 offset_top = -35.0
 offset_right = -16.0
 offset_bottom = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Character" unique_id=2139710529]
+
+[node name="Visualizer" parent="Character/CanvasLayer" unique_id=1688392568 instance=ExtResource("18_gysxx")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 196.0
+offset_bottom = 196.0
+scale = Vector2(1.8, 1.8)
