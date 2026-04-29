@@ -135,7 +135,7 @@ size = Vector2(13, 14.25)
 
 [sub_resource type="Animation" id="Animation_p10r7"]
 resource_name = "MoveDown"
-length = 0.508046
+length = 0.5
 step = 0.0023
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -144,10 +144,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
+"times": PackedFloat32Array(0, 0.24827586, 0.5),
 "transitions": PackedFloat32Array(0.46651652, 1, 1),
 "update": 0,
-"values": [Vector2(0, -5), Vector2(0, 5.07), Vector2(0, -5)]
+"values": [Vector2(0, 0), Vector2(0, 5.07), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_lqjtr"]
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(0.46651652, 1, 1),
 "update": 0,
-"values": [Vector2(0, -5), Vector2(0, -11.93), Vector2(0, -5)]
+"values": [Vector2(0, 0), Vector2(0, -11.93), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_yk651"]
@@ -181,7 +181,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(0.46651652, 1, 1),
 "update": 0,
-"values": [Vector2(0, -5), Vector2(0, -11.93), Vector2(0, -5)]
+"values": [Vector2(0, 0), Vector2(0, -8.61), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bke53"]
@@ -198,7 +198,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -5), Vector2(0, -11.22), Vector2(0, -5)]
+"values": [Vector2(0, 0), Vector2(0, -8.61), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0bdai"]
@@ -213,7 +213,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -5)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oyoy6"]
@@ -231,13 +231,11 @@ script = ExtResource("1_6m775")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=199547287]
 texture_filter = 1
-position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_0bdai")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=97896159]
-position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_yk651")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176520939]
@@ -245,6 +243,6 @@ libraries/ = SubResource("AnimationLibrary_oyoy6")
 
 [node name="Healthbar" parent="." unique_id=81984643 instance=ExtResource("4_sse65")]
 offset_left = -6.0
-offset_top = -16.0
+offset_top = -12.0
 offset_right = 6.0
-offset_bottom = -14.0
+offset_bottom = -10.0

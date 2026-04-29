@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b23pafo82i82s" path="res://weapon/wand.gd" id="1_odxgx"]
 
 [node name="wand_body" type="Node2D" unique_id=1805183596]
+z_index = 2
 script = ExtResource("1_odxgx")
 
 [node name="Wand" type="Sprite2D" parent="." unique_id=1519811770]
