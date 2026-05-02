@@ -60,6 +60,7 @@ func _ready():
 	for area in corrupt_areas:
 		area.body_entered.connect(_on_corrupt_entered)
 		area.body_exited.connect(_on_corrupt_exited)
+		area.cleared.connect(_on_area_cleared)
 	print("tile_size from TileMap: ", tile_size)
 	print("character start position: ", position)
 	
@@ -151,6 +152,11 @@ func _on_corrupt_exited(body: Node2D) -> void:
 		in_corrupt_area = false
 		corruption_changed.emit(false)
 		print("exited corrupt area")
+
+func _on_area_cleared() -> void:
+	in_corrupt_area = false
+	corruption_changed.emit(false)
+	print("corrupt area cleared")
 		
 # ===== Damage & Health =====
 func take_damage(amount):

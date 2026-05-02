@@ -128,6 +128,11 @@ func _move(direction: Vector2):
 		is_moving = false
 		return
 
+	var collision = move_and_collide(direction * tile_size, true)
+	if collision != null and not collision.get_collider().is_in_group("player"):
+		is_moving = false
+		return
+
 	anim.play(_get_anim_name(direction))
 
 	if player != null and world_to_cell(player.global_position) == target_cell:

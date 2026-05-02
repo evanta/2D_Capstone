@@ -127,6 +127,11 @@ func _move(direction: Vector2):
 		is_moving = false
 		return
 
+	var collision = move_and_collide(direction * tile_size, true)
+	if collision != null and not collision.get_collider().is_in_group("player"):
+		is_moving = false
+		return
+
 	var start_pos = cell_to_world(start_cell)
 	var target_pos = cell_to_world(target_cell)
 
