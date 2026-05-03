@@ -4,6 +4,7 @@ signal cleared
 
 var tracked_enemies: Array[Node2D] = []
 var had_enemies := false
+@export var defeated := false
 
 func _ready() -> void:
 	collision_mask |= 2  # also monitor layer 2 so enemy bodies are detected
@@ -38,6 +39,7 @@ func _clear_tileset() -> void:
 	_disable_tilemaps(self)
 
 func _disable_tilemaps(node: Node) -> void:
+	defeated = true
 	for child in node.get_children():
 		if child is TileMapLayer:
 			child.visible = false
