@@ -9300,3 +9300,4 @@ scale = Vector2(1.8, 1.8)
 
 [node name="FinishArea" parent="." unique_id=1684275781 instance=ExtResource("12_1w7pf")]
 position = Vector2(72, 8)
+nextlevel = "res://Levels/Izz_level_template.tscn"
