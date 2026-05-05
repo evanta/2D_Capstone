@@ -60,7 +60,10 @@ func _ready():
 	for area in corrupt_areas:
 		area.body_entered.connect(_on_corrupt_entered)
 		area.body_exited.connect(_on_corrupt_exited)
-		area.cleared.connect(_on_area_cleared)
+		area.cleared.connect(func():
+			_on_area_cleared()
+			area.body_entered.disconnect(_on_corrupt_entered)
+		)
 	print("tile_size from TileMap: ", tile_size)
 	print("character start position: ", position)
 	
