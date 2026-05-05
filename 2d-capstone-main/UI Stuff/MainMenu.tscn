@@ -92,7 +92,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 6
 
-[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=9307482]
+[node name="StartGame" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=9307482]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -107,7 +107,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
 toggle_mode = true
 text = "START GAME!"
 
-[node name="StartButton2" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=926281600]
+[node name="HowToPlay" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=926281600]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -123,7 +123,7 @@ toggle_mode = true
 action_mode = 0
 text = "HOW TO PLAY"
 
-[node name="StartButton3" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=30888937]
+[node name="Settings" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=30888937]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -139,4 +139,4 @@ toggle_mode = true
 action_mode = 0
 text = "SETTINGS"
 
-[connection signal="pressed" from="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer/StartGame" to="." method="_on_start_button_pressed"]
