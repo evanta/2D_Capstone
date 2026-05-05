@@ -10,7 +10,7 @@ signal corruption_changed(is_in: bool)
 
 @export var cameraZoom: float = 1.1
 @export var moveSpeed: float = 2.0 #how fast does the player move
-@export var timeOffBeat: float = 0.15 #how off beat the player can input movement and the character still move
+@export var timeOffBeat: float = 0.2 #how off beat the player can input movement and the character still move
 @export var maxHealth: float = 100 #Important for health bar UI. DONT DELETE
 @export var offBeatDamage: int = 5 #how much damage does the character take when they move off beat
 @export var wandDamage: int = 35 #how much damage does the wand do when it hits an enemy
