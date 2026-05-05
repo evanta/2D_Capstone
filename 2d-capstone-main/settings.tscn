@@ -1,25 +1,20 @@
-[gd_scene format=3 uid="uid://evbdhj24mvy5"]
+[gd_scene format=3 uid="uid://xlhepjm0l6pf"]
 
-[ext_resource type="Script" uid="uid://bgts3npp1vv6i" path="res://UI Stuff/main_menu.gd" id="1_eiq68"]
-[ext_resource type="Texture2D" uid="uid://cslyg15ht5xye" path="res://Assets/UI Assets/UI_sprite_sheet.png" id="1_nijuj"]
-[ext_resource type="Texture2D" uid="uid://ki0qengog4bs" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/UI assets (3x).png" id="2_jqrih"]
-[ext_resource type="FontFile" uid="uid://bs2ahlupmhpv3" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/Fonts/FantasyRPGtitle (size 11).ttf" id="2_o3ear"]
+[ext_resource type="Texture2D" uid="uid://cslyg15ht5xye" path="res://Assets/UI Assets/UI_sprite_sheet.png" id="2_cj1lu"]
+[ext_resource type="FontFile" uid="uid://bs2ahlupmhpv3" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/Fonts/FantasyRPGtitle (size 11).ttf" id="3_71mqq"]
+[ext_resource type="Texture2D" uid="uid://ki0qengog4bs" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/UI assets (3x).png" id="4_3j6r5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqrih"]
-texture = ExtResource("2_jqrih")
+texture = ExtResource("4_3j6r5")
 region_rect = Rect2(3, 579, 138, 45)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eiq68"]
-texture = ExtResource("2_jqrih")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nijuj"]
+texture = ExtResource("4_3j6r5")
 region_rect = Rect2(291, 579, 138, 45)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3ear"]
-texture = ExtResource("2_jqrih")
+texture = ExtResource("4_3j6r5")
 region_rect = Rect2(144, 576, 145, 48)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nijuj"]
-texture = ExtResource("2_jqrih")
-region_rect = Rect2(291, 579, 138, 45)
 
 [node name="InGameUI" type="Control" unique_id=1339938457]
 layout_mode = 3
@@ -28,7 +23,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eiq68")
 
 [node name="MainMenu" type="MarginContainer" parent="." unique_id=1672405588]
 layout_mode = 1
@@ -51,28 +45,8 @@ size_flags_vertical = 4
 [node name="NinePatchRect" type="NinePatchRect" parent="MainMenu/VBoxContainer/MainMenuScreen" unique_id=387712823]
 custom_minimum_size = Vector2(300, 350)
 layout_mode = 2
-texture = ExtResource("1_nijuj")
+texture = ExtResource("2_cj1lu")
 region_rect = Rect2(145, 0, 95, 97)
-
-[node name="Title" type="VBoxContainer" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect" unique_id=170482842]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 65.0
-offset_right = 270.0
-offset_bottom = 295.0
-
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/Title" unique_id=736461227]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 0.93333334, 0.5137255, 1)
-theme_override_colors/font_outline_color = Color(0.9411765, 0.70980394, 0.25882354, 1)
-theme_override_constants/line_spacing = -1
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_o3ear")
-theme_override_font_sizes/font_size = 20
-text = "ROOTSONG: enlighten the forest"
-horizontal_alignment = 1
-autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect" unique_id=979077633]
 layout_mode = 1
@@ -89,23 +63,8 @@ theme_override_constants/margin_bottom = 55
 [node name="ButtonContainer" type="VBoxContainer" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer" unique_id=1696490179]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/separation = 6
-
-[node name="StartButton" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=9307482]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_o3ear")
-theme_override_font_sizes/font_size = 17
-theme_override_styles/normal = SubResource("StyleBoxTexture_jqrih")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_eiq68")
-theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
-toggle_mode = true
-text = "START GAME!"
+theme_override_constants/separation = 6
 
 [node name="StartButton2" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=926281600]
 custom_minimum_size = Vector2(200, 50)
@@ -114,14 +73,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_o3ear")
+theme_override_fonts/font = ExtResource("3_71mqq")
 theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxTexture_jqrih")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nijuj")
 theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
 toggle_mode = true
 action_mode = 0
-text = "HOW TO PLAY"
+text = "Sound"
 
 [node name="StartButton3" type="Button" parent="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=30888937]
 custom_minimum_size = Vector2(200, 50)
@@ -130,13 +89,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
 theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("2_o3ear")
+theme_override_fonts/font = ExtResource("3_71mqq")
 theme_override_font_sizes/font_size = 17
 theme_override_styles/normal = SubResource("StyleBoxTexture_jqrih")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_nijuj")
 theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
 toggle_mode = true
 action_mode = 0
-text = "SETTINGS"
-
-[connection signal="pressed" from="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+text = "inputs"
