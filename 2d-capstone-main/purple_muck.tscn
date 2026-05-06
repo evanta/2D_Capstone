@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bcxm5dukru0tl"]
+
+[ext_resource type="Script" uid="uid://de0apn2oua1a" path="res://weapon/light_spell.gd" id="1_ostm7"]
+[ext_resource type="Texture2D" uid="uid://wiufus4prh8v" path="res://purple muck.png" id="1_qfhqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostm7"]
+size = Vector2(455, 418)
+
+[node name="purple muck" type="CharacterBody2D" unique_id=1170377112]
+script = ExtResource("1_ostm7")
+speed = 1000
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=91707627]
+texture = ExtResource("1_qfhqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1411020851]
+shape = SubResource("RectangleShape2D_ostm7")
