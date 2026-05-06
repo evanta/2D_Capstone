@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://duq8iqm080vnf"]
+
+[ext_resource type="Script" uid="uid://c4i4bqskoq40f" path="res://apple.gd" id="1_n78qv"]
+[ext_resource type="Texture2D" uid="uid://bp7am8e5ru50y" path="res://pixel apple.png" id="2_whgpf"]
+
+[node name="Apple" type="Node2D" unique_id=53008888]
+script = ExtResource("1_n78qv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=551590461]
+position = Vector2(-1.9073486e-06, 0)
+scale = Vector2(0.025641032, 0.025641028)
+texture = ExtResource("2_whgpf")
