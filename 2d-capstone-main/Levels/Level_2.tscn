@@ -43479,13 +43479,9 @@ tile_set = SubResource("TileSet_tjdri")
 [node name="BeatCollisionShape2D" type="CollisionPolygon2D" parent="LEVEL DESIGN/CorruptArea3" unique_id=99557393]
 modulate = Color(1, 1, 1, 0.3137255)
 z_index = 1
-<<<<<<< HEAD
+
 position = Vector2(-5.263794, 1.0305786)
 polygon = PackedVector2Array(-78, -95, 98, -96, 114, -80, 115, 56, 90, 62, -33, 63, -61, 62, -107, 17, -107, -63)
-=======
-position = Vector2(-5.263794, 0.030578613)
-polygon = PackedVector2Array(-78, -95, 98, -96, 114, -14, 114, 33, 91, 63, -33, 63, -58, 59, -107, 17, -107, -59)
->>>>>>> ea63eb5c73eda72f28e24f1f845e14cef308cdaf
 
 [node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea3" unique_id=927508286 instance=ExtResource("14_atokh")]
 z_index = 2
