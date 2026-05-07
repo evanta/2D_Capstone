@@ -30,6 +30,7 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_exited.emit(body)
+		print("exited boss area")
 
 
 func _track_enemy(enemy: Node2D) -> void:

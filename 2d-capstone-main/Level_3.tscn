@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://UI Stuff/healthbar.tscn" id="14_xosge"]
 [ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://UI Stuff/spellbar.tscn" id="15_276f7"]
 [ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://UI Stuff/visualizer.tscn" id="16_42om8"]
+[ext_resource type="PackedScene" uid="uid://dd0njyegwmmpe" path="res://boss_healthbar.tscn" id="19_ate15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4lyw"]
 texture = ExtResource("3_id4dl")
@@ -16549,9 +16550,9 @@ size = Vector2(190.5, 96)
 
 [node name="Leveltemplate" type="Node2D" unique_id=1256109257 node_paths=PackedStringArray("corrupt_areas")]
 script = ExtResource("1_upn1n")
-corrupt_areas = [NodePath("LEVEL DESIGN/CorruptArea1"), NodePath("LEVEL DESIGN/CorruptArea2"), NodePath("LEVEL DESIGN/CorruptArea3")]
+corrupt_areas = [NodePath("LEVEL DESIGN/CorruptArea1"), NodePath("LEVEL DESIGN/CorruptArea2"), NodePath("LEVEL DESIGN/CorruptArea3"), NodePath("LEVEL DESIGN/BossArea")]
 
-[node name="Conductor" parent="." unique_id=1174756302 instance=ExtResource("2_jc4en")]
+[node name="Conductor" parent="." unique_id=1174756302 groups=["conductor"] instance=ExtResource("2_jc4en")]
 measures = 125
 
 [node name="LEVEL DESIGN" type="Node2D" parent="." unique_id=334228804]
@@ -16640,8 +16641,8 @@ y_sort_enabled = true
 position = Vector2(55.736206, -22.969421)
 speed = 0.5
 
-[node name="Factory" parent="LEVEL DESIGN/BossArea" unique_id=976645927 instance=ExtResource("13_id4dl")]
-position = Vector2(0, -97)
+[node name="Factory" parent="LEVEL DESIGN/BossArea" unique_id=976645927 groups=["boss"] instance=ExtResource("13_id4dl")]
+position = Vector2(-1, -84)
 
 [node name="Apple" parent="LEVEL DESIGN" unique_id=53008888 instance=ExtResource("13_jc4en")]
 position = Vector2(127, 356)
@@ -16674,6 +16675,12 @@ offset_left = -80.0
 offset_top = -35.0
 offset_right = -16.0
 offset_bottom = 5.0
+
+[node name="BossHealthbar" parent="Character" unique_id=264696840 instance=ExtResource("19_ate15")]
+offset_left = 79.0
+offset_top = -34.0
+offset_right = 143.0
+offset_bottom = 6.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Character" unique_id=1658234535]
 

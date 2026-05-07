@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdnis5xr2pqou"]
 
-[ext_resource type="Script" uid="uid://c6gpsm05kvkmc" path="res://enemyhealthbar.gd" id="1_e5on7"]
+[ext_resource type="Script" uid="uid://c6gpsm05kvkmc" path="res://UI Stuff/enemyhealthbar.gd" id="1_e5on7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxsxe"]
 

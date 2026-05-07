@@ -434,7 +434,7 @@ position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_kffwq")
 
 [node name="Shooter" type="Marker2D" parent="." unique_id=423573316]
-position = Vector2(-13, -324)
+position = Vector2(0, -65)
 
 [node name="ExplosionSprite" type="AnimatedSprite2D" parent="." unique_id=999522618]
 visible = false

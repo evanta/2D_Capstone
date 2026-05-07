@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d5p3bq76soey" path="res://Enemies/jumpenemy.gd" id="1_6m775"]
 [ext_resource type="Texture2D" uid="uid://bbpnub0c523r4" path="res://Assets/slime-enemy-pixel-art-top-down-sprite-pack/PNG/Slime2/Death/Slime2_Death_full.png" id="2_vt21f"]
 [ext_resource type="Texture2D" uid="uid://dl4rejlc66cd8" path="res://Assets/slime-enemy-pixel-art-top-down-sprite-pack/PNG/Slime2/Idle/Slime2_Idle_full.png" id="3_vt21f"]
-[ext_resource type="PackedScene" uid="uid://bdnis5xr2pqou" path="res://enemyhealthbar.tscn" id="4_sse65"]
+[ext_resource type="PackedScene" uid="uid://bdnis5xr2pqou" path="res://UI Stuff/enemyhealthbar.tscn" id="4_sse65"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sse65"]
 atlas = ExtResource("2_vt21f")

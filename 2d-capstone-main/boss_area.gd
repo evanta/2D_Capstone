@@ -9,17 +9,6 @@ signal player_exited(body)
 var tracked_enemies: Array[Node2D] = []
 var had_enemies := false
 
-var boss = null
-var boss_alive := false
-
-
-func register_boss(_boss):
-	boss = _boss
-	boss_alive = true
-
-	if not boss.defeated.is_connected(_on_boss_defeated):
-		boss.defeated.connect(_on_boss_defeated)
-
 
 func _ready() -> void:
 	collision_mask |= 2
@@ -43,18 +32,16 @@ func _on_body_exited(body: Node2D) -> void:
 		player_exited.emit(body)
 
 
-func _on_boss_defeated():
-	boss_alive = false
-	_try_clear_room()
-
-
 func _track_enemy(enemy: Node2D) -> void:
 	if enemy in tracked_enemies:
 		return
 
 	tracked_enemies.append(enemy)
 	had_enemies = true
-	enemy.tree_exiting.connect(func(): _on_enemy_removed(enemy))
+
+	enemy.tree_exiting.connect(func():
+		_on_enemy_removed(enemy)
+	)
 
 
 func _on_enemy_removed(enemy: Node2D) -> void:
@@ -63,7 +50,7 @@ func _on_enemy_removed(enemy: Node2D) -> void:
 
 
 func _try_clear_room():
-	if had_enemies and tracked_enemies.is_empty() and not boss_alive:
+	if had_enemies and tracked_enemies.is_empty():
 		defeated = true
 		cleared.emit()
 		_clear_tileset()
