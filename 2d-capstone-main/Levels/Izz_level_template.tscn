@@ -79221,7 +79221,7 @@ texture = ExtResource("15_s633v")
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("9_5llb1")]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(264, 368)
+position = Vector2(305, 354)
 collision_mask = 2
 cameraZoom = 7.0
 moveSpeed = 2.0
@@ -79276,3 +79276,8 @@ position = Vector2(544, 104)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=655656521]
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1339938457 instance=ExtResource("22_bs7k8")]
+visible = false
+offset_left = 3.0
+offset_top = -5.0
+offset_right = 3.0
+offset_bottom = -5.0
