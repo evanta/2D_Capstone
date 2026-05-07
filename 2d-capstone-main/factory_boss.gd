@@ -7,8 +7,8 @@ signal player_exited(body)
 
 @export var MuckScene = preload("res://purple_muck.tscn")
 @export var damage: float = 10
-@export var maxHealth: float = 350
-@export var currentHealth: float = 350
+@export var maxHealth: float = 10
+@export var currentHealth: float = maxHealth
 
 @onready var animated_sprite = $BossSprite
 @onready var explosion_sprite = $ExplosionSprite
@@ -132,9 +132,10 @@ func die():
 
 	animated_sprite.play("close")
 	await animated_sprite.animation_finished
-
+	animated_sprite.hide()
+	
 	explosion_sprite.show()
-	explosion_sprite.play("explode")
+	explosion_sprite.play("explosion")
 	await explosion_sprite.animation_finished
 
 	defeated.emit()
