@@ -56,6 +56,7 @@ func _clear_tileset() -> void:
 
 
 func _disable_tilemaps(node: Node) -> void:
+	defeated = true
 	for child in node.get_children():
 		if child is TileMapLayer:
 			child.visible = false

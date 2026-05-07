@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cslyg15ht5xye" path="res://Assets/UI Assets/UI_sprite_sheet.png" id="1_nijuj"]
 [ext_resource type="Texture2D" uid="uid://ki0qengog4bs" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/UI assets (3x).png" id="2_jqrih"]
 [ext_resource type="FontFile" uid="uid://bs2ahlupmhpv3" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/Fonts/FantasyRPGtitle (size 11).ttf" id="2_o3ear"]
+[ext_resource type="Texture2D" uid="uid://chsu0xd5gqwe8" path="res://Assets/UI Assets/20250420manaSoul9SlicesE-Sheet.png" id="5_q2h20"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqrih"]
 texture = ExtResource("2_jqrih")
@@ -122,6 +123,12 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
 toggle_mode = true
 action_mode = 0
 text = "HOW TO PLAY"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1763980604]
+z_index = -1
+position = Vector2(572, 356.00006)
+scale = Vector2(13.083333, 9.583333)
+texture = ExtResource("5_q2h20")
 
 [connection signal="pressed" from="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer/StartGame" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/MainMenuScreen/NinePatchRect/MarginContainer/ButtonContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
