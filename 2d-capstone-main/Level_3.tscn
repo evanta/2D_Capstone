@@ -16642,7 +16642,7 @@ position = Vector2(55.736206, -22.969421)
 speed = 0.5
 
 [node name="Factory" parent="LEVEL DESIGN/BossArea" unique_id=976645927 groups=["boss"] instance=ExtResource("13_id4dl")]
-position = Vector2(-1, -84)
+position = Vector2(-3, -84)
 
 [node name="Apple" parent="LEVEL DESIGN" unique_id=53008888 instance=ExtResource("13_jc4en")]
 position = Vector2(127, 356)

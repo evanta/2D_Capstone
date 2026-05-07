@@ -9227,10 +9227,6 @@ tile_set = SubResource("TileSet_qs7c1")
 [node name="BeatCollisionShape2D" type="CollisionShape2D" parent="LEVEL DESIGN/CorruptArea1" unique_id=867540171]
 shape = SubResource("ConvexPolygonShape2D_qs7c1")
 
-[node name="SmoothEnemy" parent="LEVEL DESIGN/CorruptArea1" unique_id=1802027578 instance=ExtResource("2_x24b0")]
-position = Vector2(-32, -8)
-speed = 0.5
-
 [node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea1" unique_id=310461742 instance=ExtResource("5_4cx8u")]
 position = Vector2(56, 24)
 speed = 0.5
