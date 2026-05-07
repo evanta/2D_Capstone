@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://t51mdadfbyv0" path="res://Enemies/JumpEnemy.tscn" id="14_atokh"]
 [ext_resource type="PackedScene" uid="uid://d1aeol57iifk5" path="res://Sprite/Character.tscn" id="15_1i6ur"]
 [ext_resource type="PackedScene" uid="uid://buasjltuhq8ot" path="res://Scenes/FinishArea.tscn" id="15_1o7mx"]
+[ext_resource type="PackedScene" uid="uid://duq8iqm080vnf" path="res://apple.tscn" id="16_an8ag"]
 [ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://UI Stuff/healthbar.tscn" id="16_ji4fl"]
 [ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://UI Stuff/spellbar.tscn" id="17_n005e"]
 [ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://UI Stuff/visualizer.tscn" id="18_wvo4s"]
@@ -43665,6 +43666,38 @@ position = Vector2(166, -282)
 scale = Vector2(1.6800001, 1.3199999)
 nextlevel = "res://Level_3.tscn"
 
+[node name="Apple" parent="LEVEL DESIGN" unique_id=53008888 instance=ExtResource("16_an8ag")]
+z_index = 1
+position = Vector2(768, 856)
+
+[node name="Apple2" parent="LEVEL DESIGN" unique_id=627837194 instance=ExtResource("16_an8ag")]
+z_index = 2
+position = Vector2(768, 712)
+
+[node name="Apple3" parent="LEVEL DESIGN" unique_id=119624076 instance=ExtResource("16_an8ag")]
+z_index = 2
+position = Vector2(720, 584)
+
+[node name="Apple4" parent="LEVEL DESIGN" unique_id=616058111 instance=ExtResource("16_an8ag")]
+z_index = 2
+position = Vector2(600, 456)
+
+[node name="Apple5" parent="LEVEL DESIGN" unique_id=923895976 instance=ExtResource("16_an8ag")]
+z_index = 2
+position = Vector2(464, 152)
+
+[node name="Apple6" parent="LEVEL DESIGN" unique_id=495151863 instance=ExtResource("16_an8ag")]
+z_index = 2
+position = Vector2(272, -120)
+
+[node name="Apple7" parent="LEVEL DESIGN" unique_id=1979034638 instance=ExtResource("16_an8ag")]
+z_index = 1
+position = Vector2(520, -112)
+
+[node name="Apple8" parent="LEVEL DESIGN" unique_id=481825722 instance=ExtResource("16_an8ag")]
+z_index = 2
+position = Vector2(728, 960)
+
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("15_1i6ur")]
 z_index = 2
 y_sort_enabled = true
@@ -43672,6 +43705,7 @@ position = Vector2(668, 997)
 collision_mask = 2
 cameraZoom = 7.0
 moveSpeed = 2.0
+timeOffBeat = 0.2
 
 [node name="HealthBar" parent="Character" unique_id=1391395372 instance=ExtResource("16_ji4fl")]
 z_index = 12
@@ -43704,5 +43738,6 @@ scale = Vector2(1.8, 1.8)
 bpm = 100.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=37971249]
+visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1339938457 instance=ExtResource("20_sna0o")]
