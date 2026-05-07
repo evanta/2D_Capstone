@@ -43428,7 +43428,7 @@ tile_proxies/coords_level = [[0, Vector2i(0, 3)], [13, Vector2i(0, 3)], [0, Vect
 
 [node name="Leveltemplate" type="Node2D" unique_id=1256109257 node_paths=PackedStringArray("corrupt_areas")]
 script = ExtResource("1_l1o3i")
-corrupt_areas = [NodePath("LEVEL DESIGN/CorruptArea3")]
+corrupt_areas = [NodePath("LEVEL DESIGN/CorruptArea3"), NodePath("LEVEL DESIGN/CorruptArea2"), NodePath("LEVEL DESIGN/CorruptArea1")]
 
 [node name="Conductor" parent="." unique_id=1174756302 instance=ExtResource("2_1o7mx")]
 measures = 125
@@ -43479,9 +43479,8 @@ tile_set = SubResource("TileSet_tjdri")
 [node name="BeatCollisionShape2D" type="CollisionPolygon2D" parent="LEVEL DESIGN/CorruptArea3" unique_id=99557393]
 modulate = Color(1, 1, 1, 0.3137255)
 z_index = 1
-
 position = Vector2(-5.263794, 1.0305786)
-polygon = PackedVector2Array(-78, -95, 98, -96, 114, -80, 115, 56, 90, 62, -33, 63, -61, 62, -107, 17, -107, -63)
+polygon = PackedVector2Array(-91, -113, 93, -113, 117, -81, 125, 47, 85, 71, -51, 71, -75, 63, -115, 15, -115, -89)
 
 [node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea3" unique_id=927508286 instance=ExtResource("14_atokh")]
 z_index = 2
@@ -43535,7 +43534,7 @@ tile_set = SubResource("TileSet_tjdri")
 modulate = Color(1, 1, 1, 0.3137255)
 z_index = 1
 position = Vector2(-5.263794, 1.0305786)
-polygon = PackedVector2Array(-78, -95, 98, -96, 114, -80, 115, 56, 90, 62, -33, 63, -61, 62, -107, 17, -107, -63)
+polygon = PackedVector2Array(92.263794, -97.03058, 114, -80, 124.263794, -33.03058, 124.263794, 54.96942, 90, 62, 52.263794, 78.96942, -75.736206, 78.96942, -115.736206, 38.96942, -115.736206, -97.03058)
 
 [node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea2" unique_id=1323232779 instance=ExtResource("14_atokh")]
 z_index = 2
@@ -43587,9 +43586,9 @@ tile_set = SubResource("TileSet_tjdri")
 
 [node name="BeatCollisionShape2D" type="CollisionPolygon2D" parent="LEVEL DESIGN/CorruptArea1" unique_id=1131084607]
 modulate = Color(1, 1, 1, 0.3137255)
-z_index = 1
-position = Vector2(-5.263794, 1.0305786)
-polygon = PackedVector2Array(-78, -95, 98, -96, 114, -80, 115, 56, 90, 62, -33, 63, -61, 62, -107, 17, -107, -63)
+z_index = 3
+position = Vector2(-25, -4)
+polygon = PackedVector2Array(-72, -208, 176, -208, 176, -128, 224, -128, 224, 80, 200, 104, -120, 104, -120, -128)
 
 [node name="JumpEnemy" parent="LEVEL DESIGN/CorruptArea1" unique_id=171087797 instance=ExtResource("14_atokh")]
 z_index = 2
@@ -43616,6 +43615,7 @@ position = Vector2(-45.263794, 18.030579)
 z_index = 1
 position = Vector2(166, -282)
 scale = Vector2(1.6800001, 1.3199999)
+nextlevel = "res://Level_3.tscn"
 
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("15_1i6ur")]
 z_index = 3
@@ -43642,15 +43642,15 @@ offset_right = -16.0
 offset_bottom = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Character" unique_id=2139710529]
+layer = 3
 
 [node name="Visualizer" parent="Character/CanvasLayer" unique_id=1688392568 instance=ExtResource("18_wvo4s")]
-anchors_preset = -1
-anchor_left = 0.53400004
-anchor_top = 2.009
-anchor_right = 0.53400004
-anchor_bottom = 2.009
-offset_left = -48.16803
-offset_top = 0.16796875
-offset_right = -48.16803
-offset_bottom = 0.16796875
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_top = -78.03003
+offset_bottom = -78.03003
+grow_vertical = 0
 scale = Vector2(1.8, 1.8)
+bpm = 100.0
