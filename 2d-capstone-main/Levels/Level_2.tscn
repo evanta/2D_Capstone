@@ -43737,4 +43737,4 @@ bpm = 100.0
 z_index = 1
 position = Vector2(160.00002, -256)
 scale = Vector2(1.6800001, 1.3199999)
-nextlevel = "res://Levels/Level_3.tscn"
+nextlevel = "res://Level_3.tscn"

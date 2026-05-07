@@ -16641,8 +16641,24 @@ y_sort_enabled = true
 position = Vector2(55.736206, -22.969421)
 speed = 0.5
 
+[node name="JumpEnemy2" parent="LEVEL DESIGN/BossArea" unique_id=1633671146 instance=ExtResource("11_8h0fm")]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(101, -143)
+speed = 0.5
+
 [node name="Factory" parent="LEVEL DESIGN/BossArea" unique_id=976645927 groups=["boss"] instance=ExtResource("13_id4dl")]
-position = Vector2(-3, -84)
+position = Vector2(4, -82)
+
+[node name="SmoothEnemy" parent="LEVEL DESIGN/BossArea" unique_id=1065075661 instance=ExtResource("12_kev4d")]
+z_index = 2
+position = Vector2(-7, 24)
+speed = 0.5
+
+[node name="SmoothEnemy2" parent="LEVEL DESIGN/BossArea" unique_id=1354426767 instance=ExtResource("12_kev4d")]
+z_index = 2
+position = Vector2(39, -172)
+speed = 0.5
 
 [node name="Apple" parent="LEVEL DESIGN" unique_id=53008888 instance=ExtResource("13_jc4en")]
 position = Vector2(127, 356)
@@ -16658,6 +16674,42 @@ position = Vector2(656, 104)
 
 [node name="Apple5" parent="LEVEL DESIGN" unique_id=1889233428 instance=ExtResource("13_jc4en")]
 position = Vector2(607, 315)
+
+[node name="Apple6" parent="LEVEL DESIGN" unique_id=118551101 instance=ExtResource("13_jc4en")]
+position = Vector2(225, 315)
+
+[node name="Apple7" parent="LEVEL DESIGN" unique_id=1801613603 instance=ExtResource("13_jc4en")]
+position = Vector2(78, 261)
+
+[node name="Apple8" parent="LEVEL DESIGN" unique_id=350736542 instance=ExtResource("13_jc4en")]
+position = Vector2(57, 88)
+
+[node name="Apple9" parent="LEVEL DESIGN" unique_id=601909475 instance=ExtResource("13_jc4en")]
+position = Vector2(-37, 48)
+
+[node name="Apple10" parent="LEVEL DESIGN" unique_id=1014822486 instance=ExtResource("13_jc4en")]
+position = Vector2(181, -73)
+
+[node name="Apple11" parent="LEVEL DESIGN" unique_id=25839723 instance=ExtResource("13_jc4en")]
+position = Vector2(306, -76)
+
+[node name="Apple12" parent="LEVEL DESIGN" unique_id=2030933827 instance=ExtResource("13_jc4en")]
+position = Vector2(455, -71)
+
+[node name="Apple13" parent="LEVEL DESIGN" unique_id=566008445 instance=ExtResource("13_jc4en")]
+position = Vector2(628, -61)
+
+[node name="Apple14" parent="LEVEL DESIGN" unique_id=518371110 instance=ExtResource("13_jc4en")]
+position = Vector2(434, 96)
+
+[node name="Apple15" parent="LEVEL DESIGN" unique_id=1752040265 instance=ExtResource("13_jc4en")]
+position = Vector2(316, 345)
+
+[node name="Apple16" parent="LEVEL DESIGN" unique_id=2044989344 instance=ExtResource("13_jc4en")]
+position = Vector2(477, 394)
+
+[node name="Apple17" parent="LEVEL DESIGN" unique_id=574615948 instance=ExtResource("13_jc4en")]
+position = Vector2(558, 394)
 
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("13_d1tx6")]
 position = Vector2(90, 25)

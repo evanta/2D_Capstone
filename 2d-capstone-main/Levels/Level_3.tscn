@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dsapheussm5lu" path="res://Groundtileswithcollisions.tres" id="10_kra4u"]
 [ext_resource type="PackedScene" uid="uid://t51mdadfbyv0" path="res://Enemies/JumpEnemy.tscn" id="11_8h0fm"]
 [ext_resource type="PackedScene" uid="uid://cshe68ow80a1x" path="res://Enemies/SmoothEnemy.tscn" id="12_kev4d"]
-[ext_resource type="Script" path="res://boss_area.gd" id="13_125md"]
+[ext_resource type="Script" uid="uid://0khjrtheixrc" path="res://boss_area.gd" id="13_125md"]
 [ext_resource type="PackedScene" uid="uid://d1aeol57iifk5" path="res://Sprite/Character.tscn" id="13_d1tx6"]
 [ext_resource type="PackedScene" uid="uid://b3hxwmobx0nrv" path="res://factory_boss.tscn" id="13_id4dl"]
 [ext_resource type="PackedScene" uid="uid://duq8iqm080vnf" path="res://apple.tscn" id="13_jc4en"]
@@ -16805,7 +16805,7 @@ speed = 0.5
 [node name="Factory" parent="LEVEL DESIGN/BossArea" unique_id=976645927 groups=["boss"] instance=ExtResource("13_id4dl")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(-1, -84)
+position = Vector2(-6, -85)
 
 [node name="Apple" parent="LEVEL DESIGN" unique_id=53008888 instance=ExtResource("13_jc4en")]
 z_index = 3
@@ -16829,7 +16829,7 @@ position = Vector2(607, 315)
 [node name="Character" parent="." unique_id=1421269656 groups=["player"] instance=ExtResource("13_d1tx6")]
 z_index = 2
 y_sort_enabled = true
-position = Vector2(175, 112)
+position = Vector2(87, 72)
 cameraZoom = 7.0
 moveSpeed = 2.0
 timeOffBeat = 0.2

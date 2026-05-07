@@ -437,6 +437,8 @@ shape = SubResource("RectangleShape2D_kffwq")
 position = Vector2(0, -65)
 
 [node name="ExplosionSprite" type="AnimatedSprite2D" parent="." unique_id=999522618]
+position = Vector2(-7.9335938, -12.5)
+scale = Vector2(0.13476563, 0.31250003)
 sprite_frames = SubResource("SpriteFrames_ayl7i")
 animation = &"explosion"
 frame = 13
