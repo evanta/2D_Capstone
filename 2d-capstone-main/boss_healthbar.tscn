@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dd0njyegwmmpe"]
 
 [ext_resource type="Texture2D" uid="uid://dohlj2b0pe36y" path="res://UI Stuff/healthbarUnder.png" id="1_vak5l"]
-[ext_resource type="Texture2D" path="res://UI Stuff/enemyHealthbarProgress.png" id="2_a00wh"]
+[ext_resource type="Texture2D" uid="uid://bme8ti17aexdk" path="res://UI Stuff/bossHealthbarProgress.png" id="2_a00wh"]
 [ext_resource type="Script" uid="uid://bgb1eei3gw1ls" path="res://boss_healthbar.gd" id="3_a00wh"]
 
 [node name="BossHealthbar" type="TextureProgressBar" unique_id=709735907]
