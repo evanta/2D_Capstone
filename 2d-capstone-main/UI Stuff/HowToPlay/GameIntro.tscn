@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://bi7elunafu7pl"]
+
+[ext_resource type="Script" uid="uid://4f01asf5vf65" path="res://UI Stuff/HowToPlay/game_intro.gd" id="1_c2p6e"]
+[ext_resource type="Texture2D" uid="uid://cslyg15ht5xye" path="res://Assets/UI Assets/UI_sprite_sheet.png" id="2_yoomj"]
+[ext_resource type="FontFile" uid="uid://bs2ahlupmhpv3" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/Fonts/FantasyRPGtitle (size 11).ttf" id="3_2ujdk"]
+[ext_resource type="Texture2D" uid="uid://ki0qengog4bs" path="res://Assets/UI Assets/RPG UI pack (by Franuka)/UI assets (3x).png" id="4_5egui"]
+[ext_resource type="Script" uid="uid://6yww1cqwnri8" path="res://UI Stuff/HowToPlay/video_tutorial.gd" id="5_7srh2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqrih"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(3, 579, 138, 45)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eiq68"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(291, 579, 138, 45)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o3ear"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(144, 576, 145, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nijuj"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(291, 579, 138, 45)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_px34n"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(3, 579, 138, 45)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jc4gp"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(291, 579, 138, 45)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c2p6e"]
+texture = ExtResource("4_5egui")
+region_rect = Rect2(144, 576, 145, 48)
+
+[node name="InGameUI" type="Control" unique_id=1339938457]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c2p6e")
+
+[node name="GameIntro" type="MarginContainer" parent="." unique_id=1672405588]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameIntro" unique_id=241570074]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GameIntroScreen" type="MarginContainer" parent="GameIntro/VBoxContainer" unique_id=1425348974]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GameIntro/VBoxContainer/GameIntroScreen" unique_id=387712823]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_yoomj")
+region_rect = Rect2(145, 0, 95, 97)
+
+[node name="Title" type="VBoxContainer" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect" unique_id=2001023455]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_constants/separation = 4
+
+[node name="Control" type="Control" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Title" unique_id=516657369]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Title" unique_id=736461227]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.93333334, 0.5137255, 1)
+theme_override_colors/font_outline_color = Color(0.9411765, 0.70980394, 0.25882354, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 25
+text = "HOW TO PLAY
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 0
+justification_flags = 0
+
+[node name="GameIntroExplanation" type="VBoxContainer" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect" unique_id=679326140]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.203
+anchor_top = 0.489
+anchor_right = 0.799
+anchor_bottom = 0.5
+offset_left = -39.2
+offset_top = -116.50001
+offset_right = 36.399994
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/GameIntroExplanation" unique_id=608842746]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 15
+text = "Help save your forest from an evil, spreading corruption! Use the power of light and music to clear corrupted areas... clear all of them to get to the HEART OF CORRUPTION and purge the evil once and for all! "
+horizontal_alignment = 3
+vertical_alignment = 3
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect" unique_id=979077633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 65
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 55
+
+[node name="ButtonContainer" type="VBoxContainer" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/MarginContainer" unique_id=1696490179]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 6
+
+[node name="StartGame" type="Button" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=9307482]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_jqrih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_eiq68")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
+toggle_mode = true
+text = "START GAME!"
+
+[node name="HowToPlay" type="Button" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=926281600]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_jqrih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nijuj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
+toggle_mode = true
+action_mode = 0
+text = "HOW TO PLAY"
+
+[node name="Settings" type="Button" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/MarginContainer/ButtonContainer" unique_id=30888937]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_jqrih")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nijuj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o3ear")
+toggle_mode = true
+action_mode = 0
+text = "SETTINGS"
+
+[node name="Button Container" type="MarginContainer" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect" unique_id=1995392984]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.614
+anchor_right = 0.5
+anchor_bottom = 0.756
+offset_left = -100.0
+offset_top = -32.5
+offset_right = 100.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ButtonContainer" type="VBoxContainer" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container" unique_id=132851949]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 1
+
+[node name="VideoTutorial" type="Button" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer" unique_id=1041821590]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_px34n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jc4gp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c2p6e")
+toggle_mode = true
+text = "TUTORIAL"
+script = ExtResource("5_7srh2")
+
+[node name="Return" type="Button" parent="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer" unique_id=1425649233]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.11372549, 0.12156863, 0.27058825, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_2ujdk")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxTexture_px34n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_jc4gp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_c2p6e")
+toggle_mode = true
+text = "RETURN"
+script = ExtResource("5_7srh2")
+
+[connection signal="pressed" from="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/MarginContainer/ButtonContainer/StartGame" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer/VideoTutorial" to="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer/VideoTutorial" method="_on_pressed"]
+[connection signal="pressed" from="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer/VideoTutorial" to="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer/VideoTutorial" method="_on_video_tutorial_pressed"]
+[connection signal="pressed" from="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer/Return" to="GameIntro/VBoxContainer/GameIntroScreen/NinePatchRect/Button Container/ButtonContainer/Return" method="_on_return_pressed"]

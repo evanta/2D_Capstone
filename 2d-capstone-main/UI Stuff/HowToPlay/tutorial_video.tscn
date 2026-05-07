@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://uqhe8mhj0e3g"]
+
+[ext_resource type="VideoStream" uid="uid://j4e2u3lk6g43" path="res://UI Stuff/HowToPlay/TUTORIALVIDFORCAPTSTONE.ogv" id="1_1q2or"]
+[ext_resource type="Script" uid="uid://cmpfm6k0dlr3p" path="res://UI Stuff/HowToPlay/quit_tut_video.gd" id="2_esr18"]
+
+[node name="TutorialVideo" type="Control" unique_id=601113813]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=494684949]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1151.0
+offset_bottom = 647.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stream = ExtResource("1_1q2or")
+autoplay = true
+expand = true
+
+[node name="Quit" type="Button" parent="." unique_id=152191647]
+layout_mode = 0
+offset_left = 986.0
+offset_top = 18.0
+offset_right = 1097.0
+offset_bottom = 82.0
+text = "QUIT"
+script = ExtResource("2_esr18")
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
