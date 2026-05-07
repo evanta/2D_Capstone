@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b7xyw1gd7i501" path="res://UI Stuff/healthbar.tscn" id="16_ji4fl"]
 [ext_resource type="PackedScene" uid="uid://clmafpxwvng00" path="res://UI Stuff/spellbar.tscn" id="17_n005e"]
 [ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://UI Stuff/visualizer.tscn" id="18_wvo4s"]
+[ext_resource type="PackedScene" uid="uid://k44er873633q" path="res://UI Stuff/PauseMenu.tscn" id="20_sna0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4lyw"]
 texture = ExtResource("3_sna0o")
@@ -43701,3 +43702,7 @@ offset_bottom = -78.03003
 grow_vertical = 0
 scale = Vector2(1.8, 1.8)
 bpm = 100.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=37971249]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1339938457 instance=ExtResource("20_sna0o")]

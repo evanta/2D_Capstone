@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://0n1tkx2v6c1l" path="res://UI Stuff/visualizer.tscn" id="18_gysxx"]
 [ext_resource type="PackedScene" uid="uid://buasjltuhq8ot" path="res://Scenes/FinishArea.tscn" id="19_5llb1"]
 [ext_resource type="PackedScene" uid="uid://duq8iqm080vnf" path="res://apple.tscn" id="20_a1tjg"]
+[ext_resource type="PackedScene" uid="uid://k44er873633q" path="res://UI Stuff/PauseMenu.tscn" id="22_bs7k8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n4lyw"]
 texture = ExtResource("3_0fu1u")
@@ -79271,3 +79272,7 @@ position = Vector2(336, -8)
 [node name="Apple3" parent="." unique_id=1393555239 instance=ExtResource("20_a1tjg")]
 z_index = 1
 position = Vector2(544, 104)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=655656521]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1339938457 instance=ExtResource("22_bs7k8")]
